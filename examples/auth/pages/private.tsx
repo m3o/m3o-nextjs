@@ -1,19 +1,19 @@
-import type { NextPage, NextPageContext, GetServerSideProps } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
-import { withAuth } from '@/m3o/server'
+import { withAuth } from '@m3o/nextjs'
 
 export const getServerSideProps = withAuth(async context => {
   if (!context.req.user) {
     return {
       redirect: {
         destination: '/',
-        permanent: false,
-      },
+        permanent: false
+      }
     }
   }
 
   return {
-    props: {},
+    props: {}
   }
 })
 

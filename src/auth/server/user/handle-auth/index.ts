@@ -6,10 +6,11 @@ import type {
   UpdatePasswordRequest,
   SendVerificationEmailRequest
 } from 'm3o/user'
-import type { M3ORequestError } from '../../../types'
-import cookie, { CookieSerializeOptions } from 'cookie'
-import { user } from '../../../services'
-import { sendError } from '../../../utils/errors'
+import type { M3ORequestError } from '../../../../types'
+import cookie from 'cookie'
+import { user } from '../../../../services'
+import { sendError } from '../../../../utils/errors'
+import { loginUser } from './routes/login'
 
 interface HandleAuthOpts {
   authCookieName?: string
@@ -59,42 +60,6 @@ function addEmailOrUsernameIfNonExists(
   }
 
   return newPayload
-}
-
-async function loginUser(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    const loginResponse = await user.login(req.body)
-    const session = loginResponse.session as Session
-
-    const readUserResponse = await getUserById(session.userId!)
-
-    const cookieOpts: CookieSerializeOptions = {
-      expires: new Date(session.expires! * 1000),
-      path: '/'
-    }
-
-    res.setHeader('Set-Cookie', [
-      cookie.serialize(AUTH_COOKIE_NAME, session.id!, cookieOpts)
-    ])
-
-    res.json({
-      account: readUserResponse.account
-    })
-  } catch (e) {
-    if (typeof e === 'string') {
-      // Do something with local errors.
-    } else {
-      const error = e as M3ORequestError
-      sendError({
-        message:
-          error.Detail === M3OErrors.IncorrectLoginPassword
-            ? 'Incorrect password'
-            : error.Detail,
-        res,
-        statusCode: error.Code
-      })
-    }
-  }
 }
 
 async function getLoggedInUser(req: NextApiRequest, res: NextApiResponse) {
@@ -257,9 +222,12 @@ async function verify(req: NextApiRequest, res: NextApiResponse) {
 }
 
 export function handleAuth(opts: HandleAuthOpts = {}) {
+  console.log(1)
   return (req: NextApiRequest, res: NextApiResponse) => {
     const { method, query } = req
     const route = query.m3oUser as string
+
+    console.log(method, query, 'test')
 
     if (route === 'login' && method === Methods.Post) {
       return loginUser(req, res)

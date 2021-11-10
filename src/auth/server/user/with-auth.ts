@@ -1,6 +1,6 @@
 import type { Account } from 'm3o/user'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { user } from '../../services'
+import { user } from '../../../services'
 
 export interface WithAuthProps {
   user: Account | null

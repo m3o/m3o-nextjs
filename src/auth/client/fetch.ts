@@ -1,3 +1,5 @@
+import { RequestError } from '../shared/types'
+
 export async function post<
   D extends Record<string, unknown>,
   R extends Record<string, unknown>
@@ -10,11 +12,9 @@ export async function post<
     }
   })
 
-  const json = await response.json()
-
-  if (!response.ok) {
-    return Promise.reject(json)
+  if (response.ok) {
+    return response.json()
   }
 
-  return json as R
+  throw ((await response.json()) as RequestError).error
 }

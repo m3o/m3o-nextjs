@@ -1,7 +1,7 @@
 import type { LoginRequest, Account } from 'm3o/user'
 import type { AuthDispatch } from '../types'
-import type { RequestError } from '../../../shared/types'
-import { post } from '../../fetch'
+import type { RequestError } from '../../../../shared/types'
+import { post } from '../../../fetch'
 
 export async function loginUser(payload: LoginRequest, dispatch: AuthDispatch) {
   dispatch({ type: 'login start' })
