@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { LoginRequest, Account } from 'm3o/user'
 import { usePost } from '../../hooks/use-post'
-import { useAuth } from '../auth-provider'
+import { useAuth } from '../components/AuthProvider'
 
 type LoginFields = Pick<LoginRequest, 'email' | 'password'>
 

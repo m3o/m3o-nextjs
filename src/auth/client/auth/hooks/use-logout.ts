@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { usePost } from '../../hooks/use-post'
-import { useAuth } from '../auth-provider'
+import { useAuth } from '../components/AuthProvider'
 
 export function useLogout() {
   const { setUser } = useAuth()
