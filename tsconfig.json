@@ -2,13 +2,14 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "declaration": true,
+    "declarationDir": ".",
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -27,5 +28,6 @@
     "outDir": "./dist",
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
+  "exclude": ["dist"],
   "include": ["src", "tests"]
 }
