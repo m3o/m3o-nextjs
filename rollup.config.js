@@ -1,5 +1,5 @@
 import typescript from '@rollup/plugin-typescript'
-import postcss from 'rollup-plugin-postcss'
+import postcss from 'rollup-plugin-postcss-modules'
 
 export default {
   input: 'src/index.ts',
@@ -13,7 +13,8 @@ export default {
       extract: true,
       plugins: [],
       modules: true,
-      autoModules: true
+      autoModules: true,
+      writeDefinitions: true
     })
   ]
 }

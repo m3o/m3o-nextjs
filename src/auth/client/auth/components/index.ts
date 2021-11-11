@@ -1,2 +1,2 @@
-export * from './M3OAuthSignIn'
+export * from './AuthSignIn'
 export * from './AuthProvider'

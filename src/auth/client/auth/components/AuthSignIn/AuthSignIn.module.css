@@ -1,0 +1,48 @@
+.root {
+  --m3o-auth-sign-in-border-radius: 5px;
+  --m3o-auth-sign-in-max-width: 600px;
+
+  font-family: var(--m3o-font-family);
+  padding: var(--m3o-xl-spacing);
+  border: var(--m3o-border);
+  border-radius: var(--m3o-auth-sign-in-border-radius);
+  background-color: var(--m3o-white);
+  max-width: var(--m3o-auth-sign-in-max-width);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+.subTitle {
+  color: #6c6c6c;
+  font-weight: normal;
+  font-size: 1.1rem;
+  margin-bottom: var(--m3o-spacing);
+}
+
+.button {
+  width: 100%;
+}
+
+.accountText {
+  margin-top: var(--m3o-spacing);
+  color: #6c6c6c;
+}
+
+.registerButton {
+  color: var(--m3o-primary);
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  font-family: var(--m3o-font-family);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}

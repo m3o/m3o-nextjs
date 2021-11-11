@@ -14,7 +14,8 @@
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",
     "install:auth": "npm i --prefix=examples/auth --no-package-lock",
-    "start:auth": "npm run dev --prefix=examples/auth",
+    "rollup-watch": "rollup -c -w",
+    "start:auth": "npm run rollup-watch & npm run dev --prefix=examples/auth",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -36,6 +37,7 @@
     "@types/react-dom": "^17.0.11",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
@@ -52,13 +54,20 @@
     "rollup": "^2.59.0",
     "rollup-plugin-postcss": "^4.0.1",
     "start-server-and-test": "^1.14.0",
+    "storybook-css-modules-preset": "^1.1.1",
+    "style-loader": "^3.3.1",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.3",
+    "classnames": "^2.3.1",
     "cookie": "^0.4.1",
     "js-cookie": "^3.0.1",
     "m3o": "^1.0.682",
-    "rimraf": "^3.0.2"
+    "react-hook-form": "^7.19.4",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-postcss-modules": "^2.0.2",
+    "yup": "^0.32.11"
   }
 }
