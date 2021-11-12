@@ -1,6 +1,9 @@
+.root {
+  margin-bottom: var(--m3o-lg-spacing);
+}
+
 .root * {
   box-sizing: border-box;
-  margin-bottom: var(--m3o-lg-spacing);
 }
 
 .root label {
@@ -23,4 +26,18 @@
 .root input::placeholder {
   color: #afafaf;
   font-size: 0.9rem;
+}
+
+.error {
+  color: rgb(var(--m3o-error-red));
+  margin-top: var(--m3o-xs-spacing);
+  font-size: 0.8rem;
+}
+
+.hasError input {
+  border: 1px solid rgb(var(--m3o-error-red));
+}
+
+.hasError label {
+  color: rgb(var(--m3o-error-red));
 }

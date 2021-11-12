@@ -10,6 +10,6 @@ export default {
 const Template: Story<AuthSignInProps> = args => <AuthSignIn {...args} />
 
 export const Default = Template.bind({})
-Template.args = {
+Default.args = {
   title: 'Test'
 }

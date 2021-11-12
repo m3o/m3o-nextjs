@@ -4,6 +4,7 @@ export const subTitle: string
 export const button: string
 export const accountText: string
 export const registerButton: string
+export const error: string
 interface Namespace {
 	"root": string,
 	"title": string,
@@ -11,6 +12,7 @@ interface Namespace {
 	"button": string,
 	"accountText": string,
 	"registerButton": string,
+	"error": string,
 }
 declare const authSignInModule: Namespace
 export default authSignInModule

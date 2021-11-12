@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 type ApiStatus = 'idle' | 'loading' | 'error'
 
@@ -14,6 +14,12 @@ interface UseApiState {
 export function useApiState(): UseApiState {
   const [error, setError] = useState('')
   const [status, setStatus] = useState<ApiStatus>('idle')
+
+  useEffect(() => {
+    if (status === 'loading') {
+      setError('')
+    }
+  }, [status])
 
   return {
     error,

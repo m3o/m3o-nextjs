@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.error {
+  margin-bottom: var(--m3o-spacing);
+}
+
 @media (min-width: 768px) {
   .title {
     font-size: 2rem;

@@ -10,15 +10,21 @@
   --m3o-gray: rgb(209, 213, 219);
   --m3o-white: rgb(255, 255, 255);
   --m3o-primary: rgb(79, 70, 229);
+  --m3o-error-red: 197, 48, 48;
 
   /* Borders */
-  --m3o-border-gray-opacity: 1;
-  --m3o-border-gray: rgba(209, 213, 219, var(--m3o-border-gray-opacity));
+  --m3o-border-opacity: 1;
+  --m3o-border-gray: rgba(209, 213, 219, var(--m3o-border-opacity));
+  --m3o-border-error-red: rgba(197, 48, 48, var(--m3o-border-opacity));
   --m3o-border: 1px solid var(--m3o-border-gray);
 
   /* Fonts */
   --m3o-font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
     Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+
+  /* Text colors */
+  --m3o-text-color-opacity: 1;
+  --m3o-text-error-red: rgba(197, 48, 48, var(--m3o-text-color-opacity));
 
   /* Components */
   --m3o-form-input-border-radius: 5px;
