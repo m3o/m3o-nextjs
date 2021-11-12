@@ -8,7 +8,7 @@ export default {
     format: 'cjs'
   },
   plugins: [
-    typescript({ tsconfig: './tsconfig.json' }),
+    typescript({ tsconfig: './tsconfig.json', sourceMap: true }),
     postcss({
       extract: true,
       plugins: [],

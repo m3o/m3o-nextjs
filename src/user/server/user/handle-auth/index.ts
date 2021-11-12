@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type {
   Session,
-  CreateRequest,
   VerifyEmailRequest,
   UpdatePasswordRequest
 } from 'm3o/user'
@@ -11,10 +10,6 @@ import { user } from '../../../../services'
 import { sendError } from '../../../../utils/errors'
 import { loginUser } from './routes/login'
 import { signUp } from './routes/sign-up'
-
-interface HandleAuthOpts {
-  authCookieName?: string
-}
 
 type UpdatePasswordBody = Omit<UpdatePasswordRequest, 'userId'>
 
@@ -43,22 +38,6 @@ async function readSession(sessionId: string): Promise<Session> {
   })
 
   return readSessionResponse.session as Session
-}
-
-function addEmailOrUsernameIfNonExists(
-  requestPayload: CreateRequest
-): CreateRequest {
-  const newPayload = { ...requestPayload }
-
-  if (!newPayload.username) {
-    newPayload.username = newPayload.email
-  }
-
-  if (!newPayload.email) {
-    newPayload.email = newPayload.username
-  }
-
-  return newPayload
 }
 
 async function getLoggedInUser(req: NextApiRequest, res: NextApiResponse) {
@@ -103,37 +82,6 @@ async function logoutUser(req: NextApiRequest, res: NextApiResponse) {
     res.json({})
   } catch (e) {
     sendError({ message: 'Server error', res, statusCode: 500 })
-  }
-}
-
-async function registerUser(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  opts: HandleAuthOpts['registerEmailOptions']
-) {
-  if (!req.body.email && !req.body.username) {
-    sendError({
-      message: 'Please provide an email or username',
-      res,
-      statusCode: 400
-    })
-
-    return
-  }
-
-  const payload = addEmailOrUsernameIfNonExists(req.body)
-
-  try {
-    await user.create(payload)
-
-    if (opts) {
-      // const response = await user.sendVerificationEmail(opts)
-    }
-
-    res.json({})
-  } catch (e) {
-    const error = e as M3ORequestError
-    sendError({ message: error.Detail, res, statusCode: error.Code })
   }
 }
 
@@ -220,7 +168,7 @@ async function verify(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export function handleAuth(opts: HandleAuthOpts = {}) {
+export function handleAuth() {
   return (req: NextApiRequest, res: NextApiResponse) => {
     const { method, query } = req
     const route = query.m3oUser as string

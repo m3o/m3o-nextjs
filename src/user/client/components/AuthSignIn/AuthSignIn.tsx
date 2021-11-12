@@ -9,6 +9,7 @@ import { Button } from '../../../../ui/components/Button'
 import styles from './AuthSignIn.module.css'
 import { useEmailLogin } from '../../hooks/use-email-login'
 import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
+import { Card } from '../../../../ui/components/Card'
 
 export interface AuthSignInProps {
   className?: string
@@ -40,6 +41,7 @@ const schema = yup.object().shape({
 })
 
 export function AuthSignIn({
+  className,
   emailDefaultValue = '',
   emailLabel = 'Email',
   emailPlaceholder = 'Please provide your email address',
@@ -53,7 +55,7 @@ export function AuthSignIn({
   signUpButtonText = 'Register now',
   subTitle = ''
 }: AuthSignInProps): ReactElement {
-  const classes = classnames(styles.root, classnames)
+  const classes = classnames(className)
 
   const { control, handleSubmit } = useForm<AuthSignInFields>({
     defaultValues: {
@@ -73,7 +75,7 @@ export function AuthSignIn({
   }, [])
 
   return (
-    <div className={classes}>
+    <Card className={classes}>
       <h1 className={styles.title}>{title}</h1>
       {subTitle && <h2 className={styles.subTitle}>{subTitle}</h2>}
       {error && <ErrorAlert className={styles.error}>{error}</ErrorAlert>}
@@ -113,6 +115,6 @@ export function AuthSignIn({
           <a className={styles.registerButton}>{signUpButtonText}</a>
         </Link>
       </p>
-    </div>
+    </Card>
   )
 }
