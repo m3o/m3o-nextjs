@@ -4,11 +4,11 @@ import Link from 'next/link'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import classnames from 'classnames'
-import { FormInput } from '../FormInput'
+import { FormInput } from '../../../../ui/components/FormInput'
 import { Button } from '../../../../ui/components/Button'
 import styles from './AuthSignIn.module.css'
 import { useEmailLogin } from '../../hooks/use-email-login'
-import { ErrorAlert } from '../ErrorAlert'
+import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
 
 export interface AuthSignInProps {
   className?: string
