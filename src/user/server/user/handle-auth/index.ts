@@ -3,18 +3,17 @@ import type {
   Session,
   CreateRequest,
   VerifyEmailRequest,
-  UpdatePasswordRequest,
-  SendVerificationEmailRequest
+  UpdatePasswordRequest
 } from 'm3o/user'
 import type { M3ORequestError } from '../../../../types'
 import cookie from 'cookie'
 import { user } from '../../../../services'
 import { sendError } from '../../../../utils/errors'
 import { loginUser } from './routes/login'
+import { signUp } from './routes/sign-up'
 
 interface HandleAuthOpts {
   authCookieName?: string
-  registerEmailOptions?: Partial<Omit<SendVerificationEmailRequest, 'email'>>
 }
 
 type UpdatePasswordBody = Omit<UpdatePasswordRequest, 'userId'>
@@ -222,12 +221,9 @@ async function verify(req: NextApiRequest, res: NextApiResponse) {
 }
 
 export function handleAuth(opts: HandleAuthOpts = {}) {
-  console.log(1)
   return (req: NextApiRequest, res: NextApiResponse) => {
     const { method, query } = req
     const route = query.m3oUser as string
-
-    console.log(method, query, 'test')
 
     if (route === 'login' && method === Methods.Post) {
       return loginUser(req, res)
@@ -237,8 +233,8 @@ export function handleAuth(opts: HandleAuthOpts = {}) {
       return logoutUser(req, res)
     }
 
-    if (route === 'register' && method === Methods.Post) {
-      return registerUser(req, res, opts.registerEmailOptions)
+    if (route === 'sign-up' && method === Methods.Post) {
+      return signUp(req, res)
     }
 
     if (route === 'me' && method === Methods.Get) {

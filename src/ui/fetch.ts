@@ -1,4 +1,4 @@
-import { RequestError } from '../shared/types'
+import { RequestError } from '../user/shared/types'
 
 export async function post<
   D extends Record<string, unknown>,

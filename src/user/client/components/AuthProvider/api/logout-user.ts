@@ -1,6 +1,6 @@
-import type { RequestError } from '../../../../../shared/types'
+import type { RequestError } from '../../../../shared/types'
 import type { AuthDispatch } from '../types'
-import { post } from '../../../../fetch'
+import { post } from '../../../../../ui/fetch'
 
 export async function logoutUser(dispatch: AuthDispatch): Promise<void> {
   dispatch({ type: 'logout start' })

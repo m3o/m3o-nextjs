@@ -1,11 +1,11 @@
-import React, { ReactElement, useCallback, useState } from 'react'
+import React, { ReactElement, useCallback } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import Link from 'next/link'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Account } from 'm3o/user'
 import classnames from 'classnames'
 import { FormInput } from '../FormInput'
-import { Button } from '../../../components/Button'
+import { Button } from '../../../../ui/components/Button'
 import styles from './AuthSignIn.module.css'
 import { useEmailLogin } from '../../hooks/use-email-login'
 import { ErrorAlert } from '../ErrorAlert'
@@ -15,10 +15,13 @@ export interface AuthSignInProps {
   emailDefaultValue?: string
   emailLabel?: string
   emailPlaceholder?: string
+  noAccountText?: string
   passwordDefaultValue?: string
   passwordLabel?: string
   passwordPlaceholder?: string
   onSuccessfulLogin: VoidFunction
+  signUpUrl?: string
+  signUpButtonText?: string
   title?: string
   subTitle?: string
 }
@@ -40,11 +43,14 @@ export function AuthSignIn({
   emailDefaultValue = '',
   emailLabel = 'Email',
   emailPlaceholder = 'Please provide your email address',
+  noAccountText = "Don't have an account?",
   onSuccessfulLogin,
   passwordDefaultValue = '',
   passwordLabel = 'Password',
   passwordPlaceholder = 'Please provide your password',
   title = 'Sign in',
+  signUpUrl = '/sign-up',
+  signUpButtonText = 'Register now',
   subTitle = ''
 }: AuthSignInProps): ReactElement {
   const classes = classnames(styles.root, classnames)
@@ -102,8 +108,10 @@ export function AuthSignIn({
         </Button>
       </form>
       <p className={styles.accountText}>
-        Don't have an account?{' '}
-        <button className={styles.registerButton}>Register now</button>
+        {noAccountText}{' '}
+        <Link href={signUpUrl}>
+          <a className={styles.registerButton}>{signUpButtonText}</a>
+        </Link>
       </p>
     </div>
   )

@@ -20,12 +20,12 @@ export function Header() {
           ) : (
             <div>
               {user ? (
-                <button className="btn" onClick={logout}>
+                <button className="m3o-button" onClick={logout}>
                   Logout
                 </button>
               ) : (
                 <Link href="/login">
-                  <a className="btn">Login</a>
+                  <a className="m3o-button">Login</a>
                 </Link>
               )}
             </div>
@@ -34,7 +34,7 @@ export function Header() {
       </header>
       <style jsx>{`
         .header {
-          padding: 1.5rem;
+          padding: 1rem;
           border-bottom: 1px solid #dedede;
           background: white;
         }
