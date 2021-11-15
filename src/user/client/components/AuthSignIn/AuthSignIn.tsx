@@ -24,6 +24,8 @@ export interface AuthSignInProps {
   signUpButtonText?: string
   title?: string
   subTitle?: string
+  submitButtonLabel?: string
+  submitButtonTestId?: string
 }
 
 type AuthSignInFields = {
@@ -44,6 +46,8 @@ export function AuthSignIn({
   title = 'Sign in',
   signUpUrl = '/sign-up',
   signUpButtonText = 'Register now',
+  submitButtonLabel = 'Submit',
+  submitButtonTestId,
   subTitle = ''
 }: AuthSignInProps): ReactElement {
   const classes = classnames(className)
@@ -73,8 +77,13 @@ export function AuthSignIn({
             label={passwordLabel}
             placeholder={passwordPlaceholder}
           />
-          <Button type="submit" className={styles.button} isLoading={isLoading}>
-            Submit
+          <Button
+            type="submit"
+            className={styles.button}
+            isLoading={isLoading}
+            testId={submitButtonTestId}
+          >
+            {submitButtonLabel}
           </Button>
         </form>
       </FormProvider>

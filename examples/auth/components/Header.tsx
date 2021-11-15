@@ -25,7 +25,9 @@ export function Header() {
                 </button>
               ) : (
                 <Link href="/login">
-                  <a className="m3o-button">Login</a>
+                  <a className="m3o-button" data-testid="login">
+                    Login
+                  </a>
                 </Link>
               )}
             </div>
