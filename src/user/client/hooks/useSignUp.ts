@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { CreateRequest } from 'm3o/user'
 import { post } from '../../../ui/fetch'
 import { useApiState, UseApiState } from '../../../ui/hooks/use-api-state'
+import { CONFIG } from '../../../config'
 
 type UseSignUp = Omit<UseApiState, 'setError' | 'setStatus'> & {
   signUp: (payload: CreateRequest) => void
@@ -14,7 +15,10 @@ export function useSignUp(): UseSignUp {
     setStatus('loading')
 
     try {
-      await post<CreateRequest, {}>('/api/user/sign-up', payload)
+      await post<CreateRequest, {}>(
+        `/api/${CONFIG.API_FOLDER_NAME}/sign-up`,
+        payload
+      )
       setStatus('idle')
     } catch (e) {
       const error = e as { message: string }

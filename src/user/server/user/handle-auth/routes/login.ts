@@ -5,14 +5,13 @@ import cookie, { CookieSerializeOptions } from 'cookie'
 import { user } from '../../../../../services'
 import { sendError } from '../../../../../utils/errors'
 import { isM3ORequestError } from '../../../utils/error'
+import { CONFIG } from '../../../../../config'
 
 type LoginError = string | M3ORequestError
 
 interface ErrorMessagesDictionary {
   [key: string]: string
 }
-
-const AUTH_COOKIE_NAME = 'm3o-auth-session'
 
 function getUserById(userId: string) {
   return user.read({
@@ -46,7 +45,7 @@ export async function loginUser(req: NextApiRequest, res: NextApiResponse) {
     }
 
     res.setHeader('Set-Cookie', [
-      cookie.serialize(AUTH_COOKIE_NAME, session.id!, cookieOpts)
+      cookie.serialize(CONFIG.USER_COOKIE_NAME, session.id!, cookieOpts)
     ])
 
     res.json({

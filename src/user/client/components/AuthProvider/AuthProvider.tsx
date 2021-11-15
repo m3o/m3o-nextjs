@@ -8,6 +8,7 @@ import React, {
   useState
 } from 'react'
 import cookies from 'js-cookie'
+import { CONFIG } from '../../../../config'
 
 type AuthProviderProps = PropsWithChildren<{ user?: Account }>
 
@@ -46,7 +47,7 @@ const AuthContext = createContext<AuthContext>({
 })
 
 async function fetchUser(): Promise<AuthAuthenticateResponse | undefined> {
-  const response = await fetch('/api/user/me')
+  const response = await fetch(`/api/${CONFIG.API_FOLDER_NAME}/me`)
   return response.ok ? response.json() : undefined
 }
 
@@ -64,7 +65,7 @@ export function AuthProvider({
   }, [])
 
   useEffect(() => {
-    const sessionCookie = cookies.get('m3o-auth-session')
+    const sessionCookie = cookies.get(CONFIG.USER_COOKIE_NAME)
 
     ;(async (): Promise<void> => {
       if (!sessionCookie) {

@@ -1,6 +1,7 @@
 import type { Account } from 'm3o/user'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { user } from '../../../services'
+import { CONFIG } from '../../../config'
 
 export interface WithAuthProps {
   user: Account | null
@@ -20,9 +21,9 @@ export function withAuth(fn: Handler) {
 
     try {
       // If the cookie exists
-      if (cookies['m3o-auth-session']) {
+      if (cookies[CONFIG.USER_COOKIE_NAME]) {
         const { session } = await user.readSession({
-          sessionId: cookies['m3o-auth-session']
+          sessionId: cookies[CONFIG.USER_COOKIE_NAME]
         })
 
         const userReadResponse = await user.read({
