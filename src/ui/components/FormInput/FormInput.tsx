@@ -1,29 +1,25 @@
-import React, { ComponentPropsWithoutRef, ReactElement } from 'react'
+import React, { ComponentPropsWithRef, forwardRef } from 'react'
 import classnames from 'classnames'
 import styles from './FormInput.module.css'
 
-export type FormInputProps = ComponentPropsWithoutRef<'input'> & {
+export type FormInputProps = ComponentPropsWithRef<'input'> & {
   className?: string
   error?: string
   label: string
 }
 
-export function FormInput({
-  className,
-  error = '',
-  label,
-  name,
-  ...props
-}: FormInputProps): ReactElement {
-  const classes = classnames(styles.root, className, {
-    [styles.hasError]: !!error
-  })
+export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+  ({ className, error = '', label, name, ...props }, ref) => {
+    const classes = classnames(styles.root, className, {
+      [styles.hasError]: !!error
+    })
 
-  return (
-    <div className={classes}>
-      <label htmlFor={name}>{label}</label>
-      <input name={name} {...props} />
-      {error && <p className={styles.error}>{error}</p>}
-    </div>
-  )
-}
+    return (
+      <div className={classes}>
+        <label htmlFor={name}>{label}</label>
+        <input name={name} {...props} ref={ref} />
+        {error && <p className={styles.error}>{error}</p>}
+      </div>
+    )
+  }
+)

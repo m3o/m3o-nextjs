@@ -9,3 +9,14 @@
   background-color: var(--m3o-white);
   max-width: var(--m3o-card-max-width);
 }
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}

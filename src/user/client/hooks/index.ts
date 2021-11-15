@@ -1,2 +1,3 @@
-export * from './use-email-login'
-export * from './use-logout'
+export * from './useEmailLogin'
+export * from './useLogout'
+export * from './useSignUp'

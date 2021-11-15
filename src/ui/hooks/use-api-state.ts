@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 type ApiStatus = 'idle' | 'loading' | 'error'
 
-interface UseApiState {
+export interface UseApiState {
   error: string
   isError: boolean
   isLoading: boolean

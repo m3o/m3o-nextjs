@@ -1,3 +1,7 @@
 export * from './AuthSignIn'
 export * from './AuthProvider'
 export * from './AuthSignUp'
+export * from './AuthEmailField'
+export * from './AuthPasswordField'
+export * from './AuthFirstNameField'
+export * from './AuthLastNameField'

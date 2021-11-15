@@ -1,0 +1,7 @@
+.button {
+  width: 100%;
+}
+
+.error {
+  margin-bottom: var(--m3o-spacing);
+}
