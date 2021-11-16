@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { CONFIG } from '../../../../../config'
-import { sendError } from '../../../../../utils/errors'
+import { CONFIG } from '../../../../config'
+import { sendError } from '../../../../utils/errors'
 import { readSession, getUserById } from '../utils'
 
 export async function me(

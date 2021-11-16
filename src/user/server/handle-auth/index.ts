@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { sendError } from '../../../../utils/errors'
+import { sendError } from '../../../utils/errors'
 import { loginUser } from './routes/login'
 import { signUp } from './routes/signUp'
 import { me } from './routes/me'

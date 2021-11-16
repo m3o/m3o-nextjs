@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { UpdatePasswordRequest } from 'm3o/user'
-import type { M3ORequestError } from '../../../../../types'
-import { CONFIG } from '../../../../../config'
-import { sendError } from '../../../../../utils/errors'
+import type { M3ORequestError } from '../../../../types'
+import { CONFIG } from '../../../../config'
+import { sendError } from '../../../../utils/errors'
 import { readSession } from '../utils'
-import { user } from '../../../../../services'
+import { user } from '../../../../services'
 
 type UpdatePasswordBody = Omit<UpdatePasswordRequest, 'userId'>
 

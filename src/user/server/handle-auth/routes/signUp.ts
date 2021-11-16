@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { CreateRequest } from 'm3o/user'
-import type { M3ORequestError } from '../../../../../types'
-import { sendError } from '../../../../../utils/errors'
-import { user } from '../../../../../services'
+import type { M3ORequestError } from '../../../../types'
+import { sendError } from '../../../../utils/errors'
+import { user } from '../../../../services'
 
 function addEmailOrUsernameIfNonExists(
   requestPayload: CreateRequest

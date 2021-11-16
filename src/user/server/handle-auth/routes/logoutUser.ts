@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import cookie from 'cookie'
-import { sendError } from '../../../../../utils/errors'
-import { user } from '../../../../../services'
-import { CONFIG } from '../../../../../config'
+import { sendError } from '../../../../utils/errors'
+import { user } from '../../../../services'
+import { CONFIG } from '../../../../config'
 
 export async function logoutUser(req: NextApiRequest, res: NextApiResponse) {
   const { cookies } = req

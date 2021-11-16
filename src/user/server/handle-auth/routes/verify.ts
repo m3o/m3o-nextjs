@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { VerifyEmailRequest } from 'm3o/user'
-import type { M3ORequestError } from '../../../../../types'
-import { user } from '../../../../../services'
-import { sendError } from '../../../../../utils/errors'
+import type { M3ORequestError } from '../../../../types'
+import { user } from '../../../../services'
+import { sendError } from '../../../../utils/errors'
 
 enum M3OErrors {
   IncorrectVerifyToken = 'token not found'

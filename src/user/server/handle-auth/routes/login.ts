@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Session } from 'm3o/user'
-import type { M3ORequestError } from '../../../../../types'
+import type { M3ORequestError } from '../../../../types'
 import cookie, { CookieSerializeOptions } from 'cookie'
-import { user } from '../../../../../services'
-import { sendError } from '../../../../../utils/errors'
-import { isM3ORequestError } from '../../../utils/error'
-import { CONFIG } from '../../../../../config'
+import { user } from '../../../../services'
+import { sendError } from '../../../../utils/errors'
+import { isM3ORequestError } from '../../../../utils/errors'
+import { CONFIG } from '../../../../config'
 
 type LoginError = string | M3ORequestError
 
