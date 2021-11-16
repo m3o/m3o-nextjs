@@ -1,15 +1,16 @@
 {
   "name": "@m3o/nextjs",
   "version": "0.0.1",
-  "description": "",
+  "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "dist/m3o-next.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "browser": {
     "m3o-next.css": "dist/m3o-next.css"
   },
-  "directories": {
-    "test": "tests"
-  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build-storybook": "build-storybook",
     "cypress:open": "cypress open",
@@ -22,7 +23,7 @@
     "storybook": "start-storybook -p 6006",
     "test:auth:watch": "start-server-and-test start:auth 3000 cypress:open"
   },
-  "author": "",
+  "author": "M3O (https://m3o.com)",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.16.0",
