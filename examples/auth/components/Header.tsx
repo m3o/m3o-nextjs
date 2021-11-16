@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import { useAuth, useLogout } from '@m3o/nextjs'
+import { useUser, useLogout } from '@m3o/nextjs'
 
 export function Header() {
-  const { user, isAuthenticating } = useAuth()
+  const { user, isAuthenticating } = useUser()
   const { logout } = useLogout()
 
   return (

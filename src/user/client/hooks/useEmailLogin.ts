@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { LoginRequest, Account } from 'm3o/user'
 import { post } from '../../../ui/fetch'
-import { useAuth } from '../components/AuthProvider/AuthProvider'
+import { useUser } from '../components/AuthProvider/AuthProvider'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
@@ -12,7 +12,7 @@ type LoginResponse = {
 }
 
 export function useEmailLogin() {
-  const { setUser } = useAuth()
+  const { setUser } = useUser()
   const { setStatus, setError, ...apiState } = useApiState()
 
   const login = useCallback(async (payload: LoginFields) => {

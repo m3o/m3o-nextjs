@@ -14,6 +14,7 @@
     "build-storybook": "build-storybook",
     "cypress:open": "cypress open",
     "prebuild": "rimraf ./dist",
+    "prepack": "npm run build",
     "build": "rollup -c",
     "install:auth": "npm i --prefix=examples/auth --no-package-lock",
     "rollup-watch": "rollup -c -w",

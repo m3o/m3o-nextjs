@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { post } from '../../../ui/fetch'
-import { useAuth } from '../components/AuthProvider'
+import { useUser } from '../components/AuthProvider'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
 export function useLogout() {
   const { setStatus, setError, ...apiState } = useApiState()
-  const { setUser } = useAuth()
+  const { setUser } = useUser()
 
   const logout = useCallback(async () => {
     setStatus('loading')

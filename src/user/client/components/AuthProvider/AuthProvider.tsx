@@ -88,11 +88,11 @@ export function AuthProvider({
   )
 }
 
-export function useAuth() {
+export function useUser() {
   const context = useContext(AuthContext)
 
   if (context === undefined) {
-    throw new Error('useAuth must be used within a AuthProvider')
+    throw new Error('useUser must be used within a AuthProvider')
   }
 
   return context

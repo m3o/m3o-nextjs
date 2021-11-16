@@ -51,7 +51,7 @@ describe('smoke tests', () => {
     login(email, password)
   })
 
-  it.only('should show the correct errors on the login screen', () => {
+  it('should show the correct errors on the login screen', () => {
     const email = chance.email()
     const password = chance.string({ length: 8 })
 
@@ -67,5 +67,27 @@ describe('smoke tests', () => {
     cy.get('[data-testid=email-error]').should('not.exist')
     cy.get('[name=password]').type(password)
     cy.get('[data-testid=password-error]').should('not.exist')
+  })
+
+  it('should not allow unauthorized users to view the "private-server" page', () => {
+    cy.visit('/private-server')
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+  })
+
+  it('should not allow unauthorized users to view the "private-client" page', () => {
+    cy.visit('/private-client')
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+  })
+
+  it('should allow authorized users to view the "private-server" page', () => {
+    login()
+    cy.visit('/private-server')
+    cy.url().should('eq', `${Cypress.config().baseUrl}/private-server`)
+  })
+
+  it('should allow authorized users to view the "private-client" page', () => {
+    login()
+    cy.visit('/private-client')
+    cy.url().should('eq', `${Cypress.config().baseUrl}/private-client`)
   })
 })

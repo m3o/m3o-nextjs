@@ -4,7 +4,7 @@ import { CreateRequest } from 'm3o/user'
 import { Card } from '../../../../ui/components/Card'
 import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
 import { Button } from '../../../../ui/components/Button'
-import { useSignUp } from '../..'
+import { useSignUp } from '../../hooks/useSignUp'
 import styles from './AuthSignUp.module.css'
 
 interface AuthSignUpProps {

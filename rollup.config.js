@@ -4,6 +4,7 @@ import postcss from 'rollup-plugin-postcss-modules'
 export default {
   input: 'src/index.ts',
   output: {
+    sourceMap: true,
     file: 'dist/m3o-next.js',
     format: 'cjs'
   },
