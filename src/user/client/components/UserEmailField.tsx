@@ -1,27 +1,27 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import * as yup from 'yup'
-import { FormInput } from '../../../../ui/components/FormInput'
+import { FormInput } from '../../../ui/components/FormInput'
 
-interface AuthEmailFieldProps {
+interface UserEmailFieldProps {
   defaultValue?: string
   label?: string
   placeholder?: string
   validationErrorMessage?: string
 }
 
-enum AuthEmailDefaultValues {
+enum UserEmailDefaultValues {
   Label = 'Email',
   Placeholder = 'Please provide your email address',
   ValidationErrorMessage = 'Please provide a valid email address'
 }
 
-export function AuthEmailField({
+export function UserEmailField({
   defaultValue = '',
-  label = AuthEmailDefaultValues.Label,
-  placeholder = AuthEmailDefaultValues.Placeholder,
-  validationErrorMessage = AuthEmailDefaultValues.ValidationErrorMessage
-}: AuthEmailFieldProps): ReactElement {
+  label = UserEmailDefaultValues.Label,
+  placeholder = UserEmailDefaultValues.Placeholder,
+  validationErrorMessage = UserEmailDefaultValues.ValidationErrorMessage
+}: UserEmailFieldProps): ReactElement {
   const { control } = useFormContext()
 
   const schema = yup.object().shape({

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import {
-  AuthSignUp,
-  AuthFirstNameField,
-  AuthLastNameField,
-  AuthEmailField,
-  AuthPasswordField
+  UserSignUp,
+  UserFirstNameField,
+  UserLastNameField,
+  UserEmailField,
+  UserPasswordField
 } from '@m3o/nextjs'
 import { Layout } from '../components/Layout'
 
@@ -14,12 +14,12 @@ export default function SignUp() {
 
   return (
     <Layout>
-      <AuthSignUp onSignUp={() => router.push('/')}>
-        <AuthFirstNameField />
-        <AuthLastNameField />
-        <AuthEmailField />
-        <AuthPasswordField />
-      </AuthSignUp>
+      <UserSignUp onSignUp={() => router.push('/')}>
+        <UserFirstNameField />
+        <UserLastNameField />
+        <UserEmailField />
+        <UserPasswordField />
+      </UserSignUp>
     </Layout>
   )
 }

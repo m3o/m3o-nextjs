@@ -2,14 +2,14 @@ import React, { ReactElement, useCallback } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Link from 'next/link'
 import classnames from 'classnames'
-import { Button } from '../../../../ui/components/Button'
-import { useEmailLogin } from '../../hooks/useEmailLogin'
-import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
-import { Card } from '../../../../ui/components/Card'
-import { AuthEmailField } from '../AuthEmailField'
-import { AuthPasswordField } from '../AuthPasswordField'
+import { Button } from '../../../ui/components/Button'
+import { useEmailLogin } from '../hooks/useEmailLogin'
+import { ErrorAlert } from '../../../ui/components/ErrorAlert'
+import { Card } from '../../../ui/components/Card'
+import { UserEmailField } from './UserEmailField'
+import { UserPasswordField } from './UserPasswordField'
 
-export interface AuthSignInProps {
+export interface UserSignInProps {
   className?: string
   emailDefaultValue?: string
   emailLabel?: string
@@ -31,12 +31,12 @@ export interface AuthSignInProps {
   title?: string
 }
 
-type AuthSignInFields = {
+type UserSignInFields = {
   email: string
   password: string
 }
 
-export function AuthSignIn({
+export function UserSignIn({
   className,
   emailDefaultValue = '',
   emailLabel,
@@ -56,12 +56,12 @@ export function AuthSignIn({
   submitButtonLabel = 'Submit',
   submitButtonTestId,
   subTitle = ''
-}: AuthSignInProps): ReactElement {
+}: UserSignInProps): ReactElement {
   const classes = classnames(className)
-  const formMethods = useForm<AuthSignInFields>()
+  const formMethods = useForm<UserSignInFields>()
   const { login, isLoading, error } = useEmailLogin()
 
-  const onSubmit = useCallback(async (values: AuthSignInFields) => {
+  const onSubmit = useCallback(async (values: UserSignInFields) => {
     try {
       await login(values)
       onSuccessfulLogin()
@@ -76,12 +76,12 @@ export function AuthSignIn({
       )}
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-          <AuthEmailField
+          <UserEmailField
             label={emailLabel}
             placeholder={emailPlaceholder}
             defaultValue={emailDefaultValue}
           />
-          <AuthPasswordField
+          <UserPasswordField
             defaultValue={passwordDefaultValue}
             label={passwordLabel}
             placeholder={passwordPlaceholder}

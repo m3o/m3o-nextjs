@@ -1,27 +1,27 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import * as yup from 'yup'
-import { FormInput } from '../../../../ui/components/FormInput'
+import { FormInput } from '../../../ui/components/FormInput'
 
-interface AuthPasswordFieldProps {
+interface UserPasswordFieldProps {
   defaultValue?: string
   label?: string
   placeholder?: string
   validationErrorMessage?: string
 }
 
-enum AuthPasswordFieldDefaultValues {
+enum UserPasswordFieldDefaultValues {
   Label = 'Password',
   Placeholder = 'Please provide your password',
   ValidationErrorMessage = 'Please provide your password'
 }
 
-export function AuthPasswordField({
+export function UserPasswordField({
   defaultValue = '',
-  label = AuthPasswordFieldDefaultValues.Label,
-  placeholder = AuthPasswordFieldDefaultValues.Placeholder,
-  validationErrorMessage = AuthPasswordFieldDefaultValues.ValidationErrorMessage
-}: AuthPasswordFieldProps): ReactElement {
+  label = UserPasswordFieldDefaultValues.Label,
+  placeholder = UserPasswordFieldDefaultValues.Placeholder,
+  validationErrorMessage = UserPasswordFieldDefaultValues.ValidationErrorMessage
+}: UserPasswordFieldProps): ReactElement {
   const { control } = useFormContext()
 
   const schema = yup.object().shape({

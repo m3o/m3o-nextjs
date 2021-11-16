@@ -1,12 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useUser, useEmailLogin, useLogout } from '@m3o/nextjs'
+import { useUser } from '@m3o/nextjs'
 import { Layout } from '../components/Layout'
 
 const Home: NextPage = () => {
   const { user } = useUser()
-  const { login } = useEmailLogin()
-  const { logout } = useLogout()
 
   return (
     <>

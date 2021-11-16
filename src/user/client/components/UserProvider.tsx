@@ -8,30 +8,30 @@ import React, {
   useState
 } from 'react'
 import cookies from 'js-cookie'
-import { CONFIG } from '../../../../config'
+import { CONFIG } from '../../../config'
 
-type AuthProviderProps = PropsWithChildren<{ user?: Account }>
+type UserProviderProps = PropsWithChildren<{ user?: Account }>
 
-type AuthContext = {
+type UserContext = {
   isAuthenticating: boolean
   error?: string
   user?: Account
   setUser: (user?: Account) => void
 }
 
-interface AuthProviderState {
+interface UserProviderState {
   isAuthenticating: boolean
   error?: string
   user?: Account
 }
 
-interface AuthAuthenticateResponse {
+interface UserAuthenticateResponse {
   account: Account
 }
 
 const missingProviderError = 'Please use within the <AuthProvider>'
 
-const AuthContext = createContext<AuthContext>({
+const AuthContext = createContext<UserContext>({
   get user(): never {
     throw new Error(missingProviderError)
   },
@@ -46,16 +46,16 @@ const AuthContext = createContext<AuthContext>({
   }
 })
 
-async function fetchUser(): Promise<AuthAuthenticateResponse | undefined> {
+async function fetchUser(): Promise<UserAuthenticateResponse | undefined> {
   const response = await fetch(`/api/${CONFIG.API_FOLDER_NAME}/me`)
   return response.ok ? response.json() : undefined
 }
 
-export function AuthProvider({
+export function UserProvider({
   children,
   user: initialUser
-}: AuthProviderProps): ReactElement {
-  const [state, setState] = useState<AuthProviderState>({
+}: UserProviderProps): ReactElement {
+  const [state, setState] = useState<UserProviderState>({
     isAuthenticating: !initialUser,
     user: initialUser
   })
@@ -92,7 +92,7 @@ export function useUser() {
   const context = useContext(AuthContext)
 
   if (context === undefined) {
-    throw new Error('useUser must be used within a AuthProvider')
+    throw new Error('useUser must be used within a <UserProvider>')
   }
 
   return context

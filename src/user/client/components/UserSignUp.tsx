@@ -1,12 +1,12 @@
 import React, { ReactElement, PropsWithChildren, useCallback } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { CreateRequest } from 'm3o/user'
-import { Card } from '../../../../ui/components/Card'
-import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
-import { Button } from '../../../../ui/components/Button'
-import { useSignUp } from '../../hooks/useSignUp'
+import { Card } from '../../../ui/components/Card'
+import { ErrorAlert } from '../../../ui/components/ErrorAlert'
+import { Button } from '../../../ui/components/Button'
+import { useSignUp } from '../hooks/useSignUp'
 
-interface AuthSignUpProps {
+interface UserSignUpProps {
   onSignUp: VoidFunction
   onSignUpError?: (error: string) => void
   submitButtonText?: string
@@ -14,14 +14,14 @@ interface AuthSignUpProps {
   title?: string
 }
 
-export function AuthSignUp({
+export function UserSignUp({
   children,
   onSignUp,
   onSignUpError,
   submitTestId = 'sign-up-button',
   submitButtonText = 'Submit',
   title = 'Sign up'
-}: PropsWithChildren<AuthSignUpProps>): ReactElement {
+}: PropsWithChildren<UserSignUpProps>): ReactElement {
   const { signUp, error, isLoading } = useSignUp()
   const formMethods = useForm<CreateRequest>()
 

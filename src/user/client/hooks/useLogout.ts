@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { post } from '../../../ui/fetch'
-import { useUser } from '../components/AuthProvider'
+import { useUser } from '../components/UserProvider'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 

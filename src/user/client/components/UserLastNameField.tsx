@@ -1,27 +1,27 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import * as yup from 'yup'
-import { FormInput } from '../../../../ui/components/FormInput'
+import { FormInput } from '../../../ui/components/FormInput'
 
-interface AuthLastNameFieldProps {
+interface UserLastNameFieldProps {
   defaultValue?: string
   label?: string
   placeholder?: string
   validationErrorMessage?: string
 }
 
-enum AuthLastNameFieldDefaultValues {
+enum UserLastNameFieldDefaultValues {
   Label = 'Last Name',
   Placeholder = 'Please provide your last name',
   ValidationErrorMessage = 'Please provide a valid last name'
 }
 
-export function AuthLastNameField({
+export function UserLastNameField({
   defaultValue = '',
-  label = AuthLastNameFieldDefaultValues.Label,
-  placeholder = AuthLastNameFieldDefaultValues.Placeholder,
-  validationErrorMessage = AuthLastNameFieldDefaultValues.ValidationErrorMessage
-}: AuthLastNameFieldProps): ReactElement {
+  label = UserLastNameFieldDefaultValues.Label,
+  placeholder = UserLastNameFieldDefaultValues.Placeholder,
+  validationErrorMessage = UserLastNameFieldDefaultValues.ValidationErrorMessage
+}: UserLastNameFieldProps): ReactElement {
   const { control } = useFormContext()
 
   const schema = yup.object().shape({
