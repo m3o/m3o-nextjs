@@ -19,6 +19,6 @@ npm install @m3o/nextjs
 
 Below is a list of the current APIs we have built components for:
 
-| API  | Readme                     |
-| ---- | -------------------------- |
-| User | [src/user/README.md][pldb] |
+| API  | Readme                                   |
+| ---- | ---------------------------------------- |
+| User | [src/user/readme.md](src/user/readme.md) |
