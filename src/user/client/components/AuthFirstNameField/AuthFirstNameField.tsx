@@ -43,6 +43,7 @@ export function AuthFirstNameField({
           label={label}
           placeholder={placeholder}
           error={fieldState.error?.message}
+          errorTestId="first-name-error"
         />
       )}
     />

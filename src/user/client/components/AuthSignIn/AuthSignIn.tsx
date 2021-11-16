@@ -22,6 +22,7 @@ export interface AuthSignInProps {
   onSuccessfulLogin: VoidFunction
   signUpUrl?: string
   signUpButtonText?: string
+  signUpLinkTestId?: string
   title?: string
   subTitle?: string
   submitButtonLabel?: string
@@ -46,6 +47,7 @@ export function AuthSignIn({
   title = 'Sign in',
   signUpUrl = '/sign-up',
   signUpButtonText = 'Register now',
+  signUpLinkTestId = 'sign-up-link',
   submitButtonLabel = 'Submit',
   submitButtonTestId,
   subTitle = ''
@@ -90,7 +92,9 @@ export function AuthSignIn({
       <p className={styles.accountText}>
         {noAccountText}{' '}
         <Link href={signUpUrl}>
-          <a className={styles.registerButton}>{signUpButtonText}</a>
+          <a className={styles.registerButton} data-testid={signUpLinkTestId}>
+            {signUpButtonText}
+          </a>
         </Link>
       </p>
     </Card>

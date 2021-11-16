@@ -81,8 +81,6 @@ export function AuthProvider({
     })()
   }, [])
 
-  console.log(state)
-
   return (
     <AuthContext.Provider value={{ ...state, setUser }}>
       {children}

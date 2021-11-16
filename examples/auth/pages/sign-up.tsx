@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import {
   AuthSignUp,
   AuthFirstNameField,
@@ -9,9 +10,11 @@ import {
 import { Layout } from '../components/Layout'
 
 export default function SignUp() {
+  const router = useRouter()
+
   return (
     <Layout>
-      <AuthSignUp onSignUp={() => console.log('Signed up')}>
+      <AuthSignUp onSignUp={() => router.push('/')}>
         <AuthFirstNameField />
         <AuthLastNameField />
         <AuthEmailField />

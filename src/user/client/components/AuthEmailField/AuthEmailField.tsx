@@ -46,6 +46,7 @@ export function AuthEmailField({
           label={label}
           placeholder={placeholder}
           error={fieldState.error?.message}
+          errorTestId="email-error"
         />
       )}
     />

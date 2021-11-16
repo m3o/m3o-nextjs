@@ -12,6 +12,7 @@ export default function Login() {
         <AuthSignIn
           subTitle="This is an example of how to use the M3O auth components"
           onSuccessfulLogin={() => router.push('/')}
+          submitButtonTestId="submit-button"
         />
       </div>
     </Layout>

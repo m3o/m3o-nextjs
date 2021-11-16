@@ -43,6 +43,7 @@ export function AuthLastNameField({
           label={label}
           placeholder={placeholder}
           error={fieldState.error?.message}
+          errorTestId="last-name-error"
         />
       )}
     />

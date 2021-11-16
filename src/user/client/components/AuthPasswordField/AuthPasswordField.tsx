@@ -47,6 +47,7 @@ export function AuthPasswordField({
           placeholder={placeholder}
           error={fieldState.error?.message}
           type="password"
+          errorTestId="password-error"
         />
       )}
     />

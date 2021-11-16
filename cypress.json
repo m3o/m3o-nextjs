@@ -9,5 +9,8 @@
   "retries": {
     "runMode": 3
   },
-  "env": {}
+  "env": {
+    "USER_EMAIL": "hello@mvirando.com",
+    "USER_PASSWORD": "password"
+  }
 }

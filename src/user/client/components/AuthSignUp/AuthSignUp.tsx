@@ -10,6 +10,8 @@ import styles from './AuthSignUp.module.css'
 interface AuthSignUpProps {
   onSignUp: VoidFunction
   onSignUpError?: (error: string) => void
+  submitButtonText?: string
+  submitTestId?: string
   title?: string
 }
 
@@ -17,9 +19,11 @@ export function AuthSignUp({
   children,
   onSignUp,
   onSignUpError,
+  submitTestId = 'sign-up-button',
+  submitButtonText = 'Submit',
   title = 'Sign up'
 }: PropsWithChildren<AuthSignUpProps>): ReactElement {
-  const { signUp, error } = useSignUp()
+  const { signUp, error, isLoading } = useSignUp()
   const formMethods = useForm<CreateRequest>()
 
   const onSubmit = useCallback(
@@ -42,8 +46,13 @@ export function AuthSignUp({
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           {children}
-          <Button type="submit" className={styles.button} isLoading={false}>
-            Submit
+          <Button
+            type="submit"
+            className={styles.button}
+            isLoading={isLoading}
+            testId={submitTestId}
+          >
+            {submitButtonText}
           </Button>
         </form>
       </FormProvider>

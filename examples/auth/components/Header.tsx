@@ -20,7 +20,11 @@ export function Header() {
           ) : (
             <div>
               {user ? (
-                <button className="m3o-button" onClick={logout}>
+                <button
+                  className="m3o-button"
+                  onClick={logout}
+                  data-testid="logout"
+                >
                   Logout
                 </button>
               ) : (
