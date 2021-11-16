@@ -1,11 +1,11 @@
 # @m3o/nextjs
 
-The M3O Next.js SDK is a UI component and Next.js handler library ready to integrate the wide range of M3O API's.
+The M3O Next.js SDK is a UI and server component library to integrate our wide range of APIs with Next.js.
 
 ### Table of Contents
 
 - [Installation](#installation)
-- [Getting Started](#getting-started)
+- [APIs](#apis)
 
 ## Installation
 
@@ -14,3 +14,11 @@ Using [npm](https://npmjs.org):
 ```sh
 npm install @m3o/nextjs
 ```
+
+## APIs
+
+Below is a list of the current APIs we have built components for:
+
+| API  | Readme                     |
+| ---- | -------------------------- |
+| User | [src/user/README.md][pldb] |
