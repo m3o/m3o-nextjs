@@ -5,7 +5,6 @@ import { CONFIG } from '../../../../config'
 import { sendError } from '../../../../utils/errors'
 import { readSession } from '../utils'
 import { user } from '../../../../services'
-
 type UpdatePasswordBody = Omit<UpdatePasswordRequest, 'userId'>
 
 enum M3OErrors {

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import { AuthSignIn } from '@m3o/nextjs'
 import { Layout } from '../components/Layout'
 
-export default function Login() {
+export default function Login(): ReactElement {
   const router = useRouter()
 
   return (

@@ -1,6 +1,5 @@
 import React, { ComponentPropsWithRef, forwardRef } from 'react'
 import classnames from 'classnames'
-import styles from './FormInput.module.css'
 
 export type FormInputProps = ComponentPropsWithRef<'input'> & {
   className?: string
@@ -11,8 +10,8 @@ export type FormInputProps = ComponentPropsWithRef<'input'> & {
 
 export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   ({ className, error = '', label, name, errorTestId, ...props }, ref) => {
-    const classes = classnames(styles.root, className, {
-      [styles.hasError]: !!error
+    const classes = classnames('m3o-form-input', className, {
+      hasError: !!error
     })
 
     return (
@@ -20,7 +19,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
         <label htmlFor={name}>{label}</label>
         <input name={name} {...props} ref={ref} />
         {error && (
-          <p className={styles.error} data-testid={errorTestId}>
+          <p className="m3o-form-input-error" data-testid={errorTestId}>
             {error}
           </p>
         )}

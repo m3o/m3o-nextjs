@@ -3,7 +3,6 @@ import { useForm, FormProvider } from 'react-hook-form'
 import Link from 'next/link'
 import classnames from 'classnames'
 import { Button } from '../../../../ui/components/Button'
-import styles from './AuthSignIn.module.css'
 import { useEmailLogin } from '../../hooks/useEmailLogin'
 import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
 import { Card } from '../../../../ui/components/Card'
@@ -15,18 +14,21 @@ export interface AuthSignInProps {
   emailDefaultValue?: string
   emailLabel?: string
   emailPlaceholder?: string
+  forgottenPasswordLink?: string
+  forgottenPasswordLinkText?: string
   noAccountText?: string
   passwordDefaultValue?: string
   passwordLabel?: string
   passwordPlaceholder?: string
   onSuccessfulLogin: VoidFunction
+  showForgottenPasswordLink?: boolean
   signUpUrl?: string
   signUpButtonText?: string
   signUpLinkTestId?: string
-  title?: string
   subTitle?: string
   submitButtonLabel?: string
   submitButtonTestId?: string
+  title?: string
 }
 
 type AuthSignInFields = {
@@ -39,12 +41,15 @@ export function AuthSignIn({
   emailDefaultValue = '',
   emailLabel,
   emailPlaceholder,
+  forgottenPasswordLink = '/reset-password',
+  forgottenPasswordLinkText = 'Forgotten password?',
   noAccountText = "Don't have an account?",
   onSuccessfulLogin,
   passwordDefaultValue = '',
   passwordLabel,
   passwordPlaceholder,
   title = 'Sign in',
+  showForgottenPasswordLink = true,
   signUpUrl = '/sign-up',
   signUpButtonText = 'Register now',
   signUpLinkTestId = 'sign-up-link',
@@ -65,8 +70,10 @@ export function AuthSignIn({
 
   return (
     <Card className={classes} title={title}>
-      {subTitle && <h2 className={styles.subTitle}>{subTitle}</h2>}
-      {error && <ErrorAlert className={styles.error}>{error}</ErrorAlert>}
+      {subTitle && <h2 className="m3o-auth-sign-in-sub-title">{subTitle}</h2>}
+      {error && (
+        <ErrorAlert className="m3o-auth-sign-in-error">{error}</ErrorAlert>
+      )}
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           <AuthEmailField
@@ -81,7 +88,7 @@ export function AuthSignIn({
           />
           <Button
             type="submit"
-            className={styles.button}
+            className="m3o-auth-sign-in-button"
             isLoading={isLoading}
             testId={submitButtonTestId}
           >
@@ -89,14 +96,24 @@ export function AuthSignIn({
           </Button>
         </form>
       </FormProvider>
-      <p className={styles.accountText}>
+      <p className="m3o-auth-sign-in-account-text">
         {noAccountText}{' '}
         <Link href={signUpUrl}>
-          <a className={styles.registerButton} data-testid={signUpLinkTestId}>
+          <a
+            className="m3o-auth-sign-in-register-button"
+            data-testid={signUpLinkTestId}
+          >
             {signUpButtonText}
           </a>
         </Link>
       </p>
+      {showForgottenPasswordLink && (
+        <p className="m3o-auth-sign-in-forgotten-password">
+          <Link href={forgottenPasswordLink}>
+            <a>{forgottenPasswordLinkText}</a>
+          </Link>
+        </p>
+      )}
     </Card>
   )
 }

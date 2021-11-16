@@ -5,7 +5,6 @@ import { Card } from '../../../../ui/components/Card'
 import { ErrorAlert } from '../../../../ui/components/ErrorAlert'
 import { Button } from '../../../../ui/components/Button'
 import { useSignUp } from '../../hooks/useSignUp'
-import styles from './AuthSignUp.module.css'
 
 interface AuthSignUpProps {
   onSignUp: VoidFunction
@@ -42,13 +41,15 @@ export function AuthSignUp({
 
   return (
     <Card title={title}>
-      {error && <ErrorAlert className={styles.error}>{error}</ErrorAlert>}
+      {error && (
+        <ErrorAlert className="m3o-auth-sign-up-error">{error}</ErrorAlert>
+      )}
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           {children}
           <Button
             type="submit"
-            className={styles.button}
+            className="m3o-auth-sign-up-button"
             isLoading={isLoading}
             testId={submitTestId}
           >

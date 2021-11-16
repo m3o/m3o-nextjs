@@ -1,2 +1,2 @@
-export * from './handle-auth'
-export * from './with-auth'
+export { handleAuth } from './handle-auth'
+export { withAuth } from './with-auth'

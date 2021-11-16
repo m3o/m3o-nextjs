@@ -1,4 +1,4 @@
-.root {
+.m3o-error-alert {
   --m3o-error-alert-bg: rgba(var(--m3o-error-red), 0.3);
   --m3o-error-alert-rounded: 3px;
   --m3o-text-size: 0.9rem;

@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { AuthProvider } from '@m3o/nextjs'
-import '@m3o/nextjs/dist/m3o-next.css'
 import '../styles/globals.css'
+import '@m3o/nextjs/dist/m3o-next.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { user } = pageProps

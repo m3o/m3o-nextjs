@@ -1,8 +1,8 @@
 import { RequestError } from '../types'
 
 export async function post<
-  D extends Record<string, unknown>,
-  R extends Record<string, unknown>
+  D extends Record<string, any>,
+  R extends Record<string, any>
 >(url: string, data?: D): Promise<R> {
   const response = await fetch(url, {
     method: 'POST',

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "declaration": true,
-    "declarationDir": ".",
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -28,6 +27,6 @@
     "outDir": "./dist",
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "exclude": ["dist"],
-  "include": ["src", "tests"]
+  "exclude": ["node_modules", "src/styles"],
+  "include": ["src"]
 }

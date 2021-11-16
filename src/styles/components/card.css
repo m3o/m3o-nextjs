@@ -1,4 +1,4 @@
-.root {
+.m3o-card {
   --m3o-card-border-radius: 5px;
   --m3o-card-max-width: 600px;
 
@@ -10,13 +10,13 @@
   max-width: var(--m3o-card-max-width);
 }
 
-.title {
+.m3o-card-title {
   margin: 0 0 1rem;
   font-size: 1.4rem;
 }
 
 @media (min-width: 768px) {
-  .title {
+  .m3o-card-title {
     font-size: 2rem;
   }
 }
