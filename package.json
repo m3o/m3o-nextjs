@@ -1,6 +1,6 @@
 {
   "name": "@m3o/nextjs",
-  "version": "0.0.102",
+  "version": "0.0.103",
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,9 @@
     "prepack": "npm run build",
     "install:auth": "npm i --prefix=examples/auth --no-package-lock",
     "start:auth": "npm run dev --prefix=examples/auth",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "M3O (https://m3o.com)",
   "license": "ISC",
@@ -65,7 +67,7 @@
     "cookie": "^0.4.1",
     "cypress": "^9.0.0",
     "js-cookie": "^3.0.1",
-    "m3o": "^1.0.746",
+    "m3o": "^1.0.755",
     "next": "^12.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -109,7 +111,10 @@
       }
     },
     "setupFilesAfterEnv": [
-      "./tests/setup.ts"
+      "./__tests__/setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "./cypress"
     ]
   }
 }
