@@ -10,4 +10,5 @@
   background-color: var(--m3o-error-alert-bg);
   border-radius: var(--m3o-error-alert-rounded);
   font-size: var(--m3o-text-size);
+  margin-bottom: var(--m3o-spacing);
 }

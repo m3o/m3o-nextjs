@@ -6,6 +6,7 @@ import { FormInput } from '../../../ui/components/FormInput'
 interface UserPasswordFieldProps {
   defaultValue?: string
   label?: string
+  name?: string
   placeholder?: string
   validationErrorMessage?: string
 }
@@ -19,6 +20,7 @@ enum UserPasswordFieldDefaultValues {
 export function UserPasswordField({
   defaultValue = '',
   label = UserPasswordFieldDefaultValues.Label,
+  name = 'password',
   placeholder = UserPasswordFieldDefaultValues.Placeholder,
   validationErrorMessage = UserPasswordFieldDefaultValues.ValidationErrorMessage
 }: UserPasswordFieldProps): ReactElement {
@@ -35,7 +37,7 @@ export function UserPasswordField({
     <Controller
       control={control}
       defaultValue={defaultValue}
-      name="password"
+      name={name}
       rules={{
         validate: password =>
           schema.validate({ password }).catch(e => e.message)

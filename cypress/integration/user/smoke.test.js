@@ -26,6 +26,10 @@ function login(email = EMAIL, password = PASSWORD) {
 describe('smoke tests', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.intercept('POST', '/api/user/send-password-reset-email', {
+      statusCode: 200,
+      body: {}
+    }).as('sendPasswordResetEmail')
   })
 
   it('should login and provider the username on the landing page', () => {
@@ -89,5 +93,18 @@ describe('smoke tests', () => {
     login()
     cy.visit('/private-client')
     cy.url().should('eq', `${Cypress.config().baseUrl}/private-client`)
+  })
+
+  it.only('should allow the user to reset their password', () => {
+    cy.contains('Reset Password').click()
+    cy.get('[name=email]').type(EMAIL)
+    cy.get('[data-testid=reset-password-email-form]').should('exist')
+    cy.get('[data-testid=reset-password-submit-button]').click()
+    cy.wait('@sendPasswordResetEmail')
+    cy.get('[data-testid=reset-password-email-form]').should('not.exist')
+    cy.get('[name=code]').type('123456')
+    cy.get('[name=newPassword]').type('new-password')
+    cy.get('[name=confirmPassword]').type('new-password')
+    cy.get('[data-testid=reset-update-password-submit]').click()
   })
 })
