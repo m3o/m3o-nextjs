@@ -25,7 +25,7 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "jsx": "react",
-    "outDir": "./dist",
+    "outDir": "./typings",
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "exclude": ["node_modules", "src/styles"],
