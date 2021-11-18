@@ -1,18 +1,23 @@
 {
   "name": "@m3o/nextjs",
-  "version": "0.0.103",
+  "version": "0.0.106",
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "types/index.d.ts",
   "private": false,
   "files": [
     "dist",
-    "src"
+    "m3o-next.css"
   ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./user/*": "./dist/user/*"
+  },
   "scripts": {
     "build": "tsc && npm run build:styles",
     "build-storybook": "build-storybook",
     "build:styles": "webpack",
+    "build:package": "tsc",
     "cypress:open": "cypress open",
     "dev": "start-server-and-test start:auth 3000 cypress:open",
     "prebuild": "rimraf ./dist",
@@ -58,6 +63,7 @@
     "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^3.3.1",
     "ts-jest": "^27.0.7",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.4"
   },
   "dependencies": {

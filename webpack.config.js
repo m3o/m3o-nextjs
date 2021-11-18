@@ -1,4 +1,3 @@
-const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
@@ -9,7 +8,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: __dirname
   },
   module: {
     rules: [

@@ -51,7 +51,7 @@ async function fetchUser(): Promise<UserAuthenticateResponse | undefined> {
   return response.ok ? response.json() : undefined
 }
 
-export function UserProvider({
+export default function UserProvider({
   children,
   user: initialUser
 }: UserProviderProps): ReactElement {

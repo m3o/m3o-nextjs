@@ -16,7 +16,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "skipLibCheck": true,
     "strict": true,
     "target": "es5",
