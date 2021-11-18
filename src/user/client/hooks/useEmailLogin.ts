@@ -11,7 +11,7 @@ type LoginResponse = {
   account: Account
 }
 
-export function useEmailLogin() {
+export default function useEmailLogin() {
   const { setUser } = useUser()
   const { setStatus, setError, ...apiState } = useApiState()
 

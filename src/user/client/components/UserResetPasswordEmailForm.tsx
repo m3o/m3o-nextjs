@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
-import { useSendResetPasswordEmail } from '../hooks/useSendResetPasswordEmail'
+import useSendResetPasswordEmail from '../hooks/useSendResetPasswordEmail'
 import { UserEmailField } from '.'
 import { Button } from '../../../ui/components/Button'
 import { ErrorAlert } from '../../../ui/components/ErrorAlert'

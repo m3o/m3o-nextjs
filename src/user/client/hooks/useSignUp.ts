@@ -8,7 +8,7 @@ type UseSignUp = Omit<UseApiState, 'setError' | 'setStatus'> & {
   signUp: (payload: CreateRequest) => void
 }
 
-export function useSignUp(): UseSignUp {
+export default function useSignUp(): UseSignUp {
   const { setStatus, setError, ...apiState } = useApiState()
 
   const signUp = useCallback(async (payload: CreateRequest) => {

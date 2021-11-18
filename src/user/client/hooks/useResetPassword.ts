@@ -3,8 +3,17 @@ import type { RequestError } from '../../../types'
 import { useCallback } from 'react'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { post } from '../../../ui/fetch'
+import { CONFIG } from '../../../config'
 
-export function useResetPassword(email: string) {
+interface UseResetPassword {
+  email: string
+  onSuccess: VoidFunction
+}
+
+export default function useResetPassword({
+  email,
+  onSuccess
+}: UseResetPassword) {
   const { setError, setStatus, ...apiState } = useApiState()
 
   const resetPassword = useCallback(
@@ -12,14 +21,14 @@ export function useResetPassword(email: string) {
       setStatus('loading')
 
       try {
-        await post('/api/user/reset-password', {
+        await post(`/api/${CONFIG.API_FOLDER_NAME}/reset-password`, {
           ...payload,
           email
         })
 
         setStatus('idle')
+        onSuccess()
       } catch (e) {
-        console.log(e)
         const error = e as RequestError['error']
         setStatus('error')
         setError(error.message)

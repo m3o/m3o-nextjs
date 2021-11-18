@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useApiState, UseApiState } from '../../../ui/hooks/use-api-state'
 import { post } from '../../../ui/fetch'
+import { CONFIG } from '../../../config'
 
 interface SendResetPasswordEmailProps {
   email: string
@@ -15,7 +16,7 @@ interface UseSendResetPasswordProps {
   onSuccess: (email: string) => void
 }
 
-export function useSendResetPasswordEmail({
+export default function useSendResetPasswordEmail({
   onSuccess
 }: UseSendResetPasswordProps): UseSendResetPasswordEmail {
   const { setError, setStatus, ...apiState } = useApiState()
@@ -25,7 +26,7 @@ export function useSendResetPasswordEmail({
       setStatus('loading')
 
       try {
-        await post('/api/user/send-password-reset-email', {
+        await post(`/api/${CONFIG.API_FOLDER_NAME}/send-password-reset-email`, {
           email
         })
 

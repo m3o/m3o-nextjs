@@ -26,10 +26,16 @@ function login(email = EMAIL, password = PASSWORD) {
 describe('smoke tests', () => {
   beforeEach(() => {
     cy.visit('/')
+
     cy.intercept('POST', '/api/user/send-password-reset-email', {
       statusCode: 200,
       body: {}
     }).as('sendPasswordResetEmail')
+
+    cy.intercept('POST', '/api/user/reset-password', {
+      statusCode: 200,
+      body: {}
+    }).as('resetPassword')
   })
 
   it('should login and provider the username on the landing page', () => {
@@ -95,7 +101,7 @@ describe('smoke tests', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/private-client`)
   })
 
-  it.only('should allow the user to reset their password', () => {
+  it('should allow the user to reset their password', () => {
     cy.contains('Reset Password').click()
     cy.get('[name=email]').type(EMAIL)
     cy.get('[data-testid=reset-password-email-form]').should('exist')
@@ -106,5 +112,45 @@ describe('smoke tests', () => {
     cy.get('[name=newPassword]').type('new-password')
     cy.get('[name=confirmPassword]').type('new-password')
     cy.get('[data-testid=reset-update-password-submit]').click()
+    cy.url().should('eq', `${Cypress.config().baseUrl}/login`)
+  })
+
+  describe('when there is an api error', () => {
+    beforeEach(() => {
+      cy.visit('/')
+
+      cy.intercept('POST', '/api/user/send-password-reset-email', {
+        statusCode: 200,
+        body: {}
+      }).as('sendPasswordResetEmail')
+
+      cy.intercept('POST', '/api/user/reset-password', {
+        statusCode: 400,
+        body: {
+          error: {
+            message: 'THIS IS THE ERROR!'
+          }
+        }
+      }).as('resetPassword')
+    })
+
+    it('should show the api error when the user tries to reset their password', () => {
+      cy.contains('Reset Password').click()
+      cy.get('[name=email]').type(EMAIL)
+      cy.get('[data-testid=reset-password-email-form]').should('exist')
+      cy.get('[data-testid=reset-password-submit-button]').click()
+      cy.wait('@sendPasswordResetEmail')
+      cy.get('[data-testid=reset-password-email-form]').should('not.exist')
+      cy.get('[name=code]').type('123456')
+      cy.get('[name=newPassword]').type('new-password')
+      cy.get('[name=confirmPassword]').type('new-password')
+      cy.get('[data-testid=reset-password-error]').should('not.exist')
+      cy.get('[data-testid=reset-update-password-submit]').click()
+      cy.wait('@resetPassword')
+      cy.get('[data-testid=reset-password-error]').should('exist')
+      cy.get('[data-testid=reset-password-error]').contains(
+        'THIS IS THE ERROR!'
+      )
+    })
   })
 })

@@ -4,7 +4,7 @@ import { CreateRequest } from 'm3o/user'
 import { Card } from '../../../ui/components/Card'
 import { ErrorAlert } from '../../../ui/components/ErrorAlert'
 import { Button } from '../../../ui/components/Button'
-import { useSignUp } from '../hooks/useSignUp'
+import useSignUp from '../hooks/useSignUp'
 
 interface UserSignUpProps {
   onSignUp: VoidFunction

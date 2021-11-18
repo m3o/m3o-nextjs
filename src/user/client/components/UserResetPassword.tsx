@@ -4,7 +4,13 @@ import { UserResetPasswordEmailForm } from './UserResetPasswordEmailForm'
 import { UserResetPasswordUpdatePasswordForm } from './UserResetPasswordUpdatePasswordForm'
 import { Card } from '../../../ui/components/Card'
 
-export function UserResetPassword(): ReactElement {
+interface UserResetPasswordProps {
+  onResetPassword: VoidFunction
+}
+
+export function UserResetPassword({
+  onResetPassword
+}: UserResetPasswordProps): ReactElement {
   const [emailSent, setEmailSent] = useState(false)
   const [email, setEmail] = useState('')
 
@@ -16,7 +22,10 @@ export function UserResetPassword(): ReactElement {
   return (
     <Card title="Reset Password">
       {emailSent ? (
-        <UserResetPasswordUpdatePasswordForm email={email} />
+        <UserResetPasswordUpdatePasswordForm
+          email={email}
+          onResetPassword={onResetPassword}
+        />
       ) : (
         <UserResetPasswordEmailForm onSuccess={onSuccess} />
       )}

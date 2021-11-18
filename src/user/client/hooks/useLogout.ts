@@ -4,7 +4,7 @@ import { useUser } from '../components/UserProvider'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
-export function useLogout() {
+export default function useLogout() {
   const { setStatus, setError, ...apiState } = useApiState()
   const { setUser } = useUser()
 
