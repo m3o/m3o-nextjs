@@ -3,7 +3,7 @@ import type { SendPasswordResetEmailRequest } from 'm3o/user'
 import type { HandleAuthOpts } from '../types'
 import type { M3ORequestError } from '../../../../types'
 import { sendError } from '../../../../utils/errors'
-import { user } from '../../../../services'
+import { user } from '../../../services'
 
 interface ExpectedRequestBody {
   email: string

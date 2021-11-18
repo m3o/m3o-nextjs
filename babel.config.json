@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    ["@babel/preset-env", { "targets": { "node": "10.13" } }]
+  ],
+  "comments": false,
+  "overrides": [
+    {
+      "test": ["./src/user/client/**", "./src/ui/**"],
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "useBuiltIns": "usage",
+            "corejs": 3,
+            "targets": "> 0.25%, not dead"
+          }
+        ]
+      ]
+    }
+  ]
+}

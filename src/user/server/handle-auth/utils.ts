@@ -1,5 +1,5 @@
 import type { Session, ReadResponse } from 'm3o/user'
-import { user } from '../../../services'
+import { user } from '../../services'
 
 export async function readSession(sessionId: string): Promise<Session> {
   const readSessionResponse = await user.readSession({

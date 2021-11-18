@@ -2,6 +2,7 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "declaration": true,
+    "emitDeclarationOnly": true,
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

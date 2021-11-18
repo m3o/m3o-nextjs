@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { UserProvider } from '@m3o/nextjs/user'
+import { UserProvider } from '@m3o/nextjs'
 import '../styles/globals.css'
 import '@m3o/nextjs/m3o-next.css'
 

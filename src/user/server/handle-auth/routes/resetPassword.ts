@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import type { ResetPasswordRequest } from 'm3o/user'
 import type { M3ORequestError } from '../../../../types'
 import { sendError } from '../../../../utils/errors'
-import { user } from '../../../../services'
+import { user } from '../../../services'
 
 export async function resetPassword(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body as ResetPasswordRequest

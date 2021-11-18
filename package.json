@@ -4,20 +4,15 @@
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "./dist/index.js",
   "types": "types/index.d.ts",
-  "private": false,
   "files": [
     "dist",
     "m3o-next.css"
   ],
-  "exports": {
-    ".": "./dist/index.js",
-    "./user": "./dist/user"
-  },
   "scripts": {
-    "build": "tsc && npm run build:styles",
+    "build": "npm run build:package && npm run build:css && tsc",
     "build-storybook": "build-storybook",
-    "build:css": "postcss src/styles/m3o-next.css --dir ./",
-    "build:package": "tsc",
+    "build:css": "postcss --config config/postcss.config.css src/styles/m3o-next.css --dir ./",
+    "build:package": "babel src --out-dir dist --extensions='.ts,.tsx'",
     "cypress:open": "cypress open",
     "dev": "start-server-and-test start:auth 3000 cypress:open",
     "prebuild": "rimraf ./dist",
@@ -28,10 +23,14 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "author": "M3O (https://m3o.com)",
+  "author": "Martin Virando (martin@m3o.com)",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
@@ -65,7 +64,8 @@
     "storybook-css-modules-preset": "^1.1.1",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "webpack": "^5.64.1"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
@@ -121,5 +121,6 @@
     "testPathIgnorePatterns": [
       "./cypress"
     ]
-  }
+  },
+  "browserslist": "> 0.25%, not dead"
 }
