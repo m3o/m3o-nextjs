@@ -8,6 +8,7 @@ import { Button } from '../../../ui/components/Button'
 import useSignUp from '../hooks/useSignUp'
 
 interface UserSignUpProps {
+  className?: string
   onSignUp: VoidFunction
   onSignUpError?: (error: string) => void
   submitButtonText?: string
@@ -17,6 +18,7 @@ interface UserSignUpProps {
 
 export function UserSignUp({
   children,
+  className,
   onSignUp,
   onSignUpError,
   submitTestId = 'sign-up-button',
@@ -41,7 +43,7 @@ export function UserSignUp({
   )
 
   return (
-    <Card title={title}>
+    <Card title={title} className={className}>
       {error && (
         <ErrorAlert className="m3o-auth-sign-up-error">{error}</ErrorAlert>
       )}

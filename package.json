@@ -1,6 +1,6 @@
 {
   "name": "@m3o/nextjs",
-  "version": "0.0.114",
+  "version": "0.0.115",
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "./index.js",
   "types": "./typings",

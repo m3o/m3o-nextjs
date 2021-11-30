@@ -5,7 +5,7 @@ import { useApiState, UseApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
 type UseSignUp = Omit<UseApiState, 'setError' | 'setStatus'> & {
-  signUp: (payload: CreateRequest) => void
+  signUp: (payload: CreateRequest) => Promise<void>
 }
 
 export default function useSignUp(): UseSignUp {
