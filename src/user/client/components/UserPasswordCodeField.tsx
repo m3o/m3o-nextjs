@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
-import * as yup from 'yup'
 import { FormInput } from '../../../ui/components/FormInput'
 
 interface UserPasswordCodeFieldProps {
@@ -24,17 +23,16 @@ export function UserPasswordCodeField({
 }: UserPasswordCodeFieldProps): ReactElement {
   const { control } = useFormContext()
 
-  const schema = yup.object().shape({
-    code: yup.string().required(validationErrorMessage)
-  })
-
   return (
     <Controller
       control={control}
       defaultValue={defaultValue}
       name="code"
       rules={{
-        validate: code => schema.validate({ code }).catch(e => e.message)
+        required: {
+          value: true,
+          message: validationErrorMessage
+        }
       }}
       render={({ field, fieldState }) => (
         <FormInput

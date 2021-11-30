@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
-import * as yup from 'yup'
 import { FormInput } from '../../../ui/components/FormInput'
 
 interface UserEmailFieldProps {
@@ -24,18 +23,16 @@ export function UserFirstNameField({
 }: UserEmailFieldProps): ReactElement {
   const { control } = useFormContext()
 
-  const schema = yup.object().shape({
-    firstName: yup.string().required(validationErrorMessage).lowercase()
-  })
-
   return (
     <Controller
       control={control}
       defaultValue={defaultValue}
       name="profile.firstName"
       rules={{
-        validate: firstName =>
-          schema.validate({ firstName }).catch(e => e.message)
+        required: {
+          value: true,
+          message: validationErrorMessage
+        }
       }}
       render={({ field, fieldState }) => (
         <FormInput

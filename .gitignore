@@ -8,3 +8,10 @@ config.js
 index.js
 types.js
 typings
+config.d.ts
+config.d.ts.map
+index.d.ts
+index.d.ts.map
+types.d.ts
+types.d.ts.map
+tsconfig.tsbuildinfo

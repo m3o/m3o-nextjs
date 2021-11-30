@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
-import * as yup from 'yup'
 import { FormInput } from '../../../ui/components/FormInput'
 
 interface UserPasswordFieldProps {
@@ -26,21 +25,20 @@ export function UserPasswordField({
 }: UserPasswordFieldProps): ReactElement {
   const { control } = useFormContext()
 
-  const schema = yup.object().shape({
-    password: yup
-      .string()
-      .min(8, 'Please provide a password with a minimum of 8 characters')
-      .required(validationErrorMessage)
-  })
-
   return (
     <Controller
       control={control}
       defaultValue={defaultValue}
       name={name}
       rules={{
-        validate: password =>
-          schema.validate({ password }).catch(e => e.message)
+        min: {
+          value: 8,
+          message: 'Please provide a password with a minimum of 8 characters'
+        },
+        required: {
+          value: true,
+          message: validationErrorMessage
+        }
       }}
       render={({ field, fieldState }) => (
         <FormInput

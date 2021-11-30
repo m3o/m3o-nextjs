@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
-import * as yup from 'yup'
 import { FormInput } from '../../../ui/components/FormInput'
 
 interface UserEmailFieldProps {
@@ -16,6 +15,9 @@ enum UserEmailDefaultValues {
   ValidationErrorMessage = 'Please provide a valid email address'
 }
 
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 export function UserEmailField({
   defaultValue = '',
   label = UserEmailDefaultValues.Label,
@@ -24,21 +26,16 @@ export function UserEmailField({
 }: UserEmailFieldProps): ReactElement {
   const { control } = useFormContext()
 
-  const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email(validationErrorMessage)
-      .required(validationErrorMessage)
-      .lowercase()
-  })
-
   return (
     <Controller
       control={control}
       defaultValue={defaultValue}
       name="email"
       rules={{
-        validate: email => schema.validate({ email }).catch(e => e.message)
+        pattern: {
+          value: EMAIL_REGEX,
+          message: validationErrorMessage
+        }
       }}
       render={({ field, fieldState }) => (
         <FormInput
