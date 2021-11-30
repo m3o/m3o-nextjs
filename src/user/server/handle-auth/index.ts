@@ -25,7 +25,7 @@ const HANDLERS = {
 export function handleAuth(opts: HandleAuthOpts = {}) {
   return (req: NextApiRequest, res: NextApiResponse) => {
     const { method, query } = req
-    const route = query.m3oUser as string
+    const [route] = query.m3oUser as string
 
     const handler = HANDLERS[`${method} ${route}`]
 
