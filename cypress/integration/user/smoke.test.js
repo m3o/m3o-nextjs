@@ -71,7 +71,7 @@ describe('smoke tests', () => {
       'Please provide a valid email address'
     )
     cy.get('[data-testid=password-error]').contains(
-      'Please provide a password with a minimum of 8 characters'
+      'Please provide your password'
     )
     cy.get('[name=email]').type(email)
     cy.get('[data-testid=email-error]').should('not.exist')

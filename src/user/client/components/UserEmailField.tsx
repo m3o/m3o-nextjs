@@ -32,6 +32,10 @@ export function UserEmailField({
       defaultValue={defaultValue}
       name="email"
       rules={{
+        required: {
+          value: true,
+          message: validationErrorMessage
+        },
         pattern: {
           value: EMAIL_REGEX,
           message: validationErrorMessage

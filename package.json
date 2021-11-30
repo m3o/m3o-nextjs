@@ -1,6 +1,6 @@
 {
   "name": "@m3o/nextjs",
-  "version": "0.0.113",
+  "version": "0.0.114",
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "./index.js",
   "types": "./typings",
@@ -87,8 +87,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.20.5",
     "rimraf": "^3.0.2",
-    "rollup-plugin-postcss-modules": "^2.0.2",
-    "yup": "^0.32.11"
+    "rollup-plugin-postcss-modules": "^2.0.2"
   },
   "jest": {
     "testEnvironment": "node",
