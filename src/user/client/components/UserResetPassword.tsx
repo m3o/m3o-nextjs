@@ -5,10 +5,12 @@ import { UserResetPasswordUpdatePasswordForm } from './UserResetPasswordUpdatePa
 import { Card } from '../../../ui/components/Card'
 
 interface UserResetPasswordProps {
+  className?: string
   onResetPassword: VoidFunction
 }
 
 export function UserResetPassword({
+  className,
   onResetPassword
 }: UserResetPasswordProps): ReactElement {
   const [emailSent, setEmailSent] = useState(false)
@@ -20,7 +22,7 @@ export function UserResetPassword({
   }
 
   return (
-    <Card title="Reset Password">
+    <Card title="Reset Password" className={className}>
       {emailSent ? (
         <UserResetPasswordUpdatePasswordForm
           email={email}
