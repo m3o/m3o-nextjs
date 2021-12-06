@@ -1,6 +1,6 @@
 # M3O User API
 
-This project provides quick and easy authentication for Next.js by leveraging the [M3O User API](https://m3o.com/user). The package provides the server routing and the all authentication state management for the UI.
+This project provides quick and easy authentication for Next.js by leveraging the [M3O User API](https://m3o.com/user). The package provides the server routing and user state management for the UI.
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Please firsty make sure that you have created an API Key on [M3O.com](https://m3
 
 Firstly you need to create the a file that will create all your user route handling. Within the `pages/api` folder create a file under the user folder called `[...m3oUser].(ts|js)`. e.g `pages/api/user/[...m3oUser].js`.
 
-Once this file is setup we now need to call the function hat will create the routes:
+Once this file is setup we now need to call the function that will create the all the auth handling on the backend.:
 
 ```javascript
 import { handleAuth } from '@m3o/nextjs'
