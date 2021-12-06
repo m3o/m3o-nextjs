@@ -6,7 +6,7 @@ This project provides quick and easy authentication for Next.js by leveraging th
 
 Please firsty make sure that you have created an API Key on [M3O.com](https://m3o.com). Once you have created this key please create a `.env.local` file within your project and add the key:
 
-`M3O_KEY=NjM1NDRjMTQtZWVjZC00OGI4LTgxYTMtMmI0ZjBjMWNiMGNm`
+`M3O_KEY=xxxxx`
 
 ### API routes / handlers
 
