@@ -1,5 +1,6 @@
+import type { ApiError } from '../../types'
 import { useCallback } from 'react'
-import { useApiState, UseApiState } from '../../../ui/hooks/use-api-state'
+import { useApiState } from '../../../ui/hooks/use-api-state'
 import { post } from '../../../ui/fetch'
 import { CONFIG } from '../../../config'
 
@@ -7,18 +8,15 @@ interface SendResetPasswordEmailProps {
   email: string
 }
 
-interface UseSendResetPasswordEmail
-  extends Omit<UseApiState, 'setError' | 'setStatus'> {
-  sendResetPasswordEmail: (props: SendResetPasswordEmailProps) => void
-}
-
 interface UseSendResetPasswordProps {
-  onSuccess: (email: string) => void
+  onSuccess?: (email: string) => void
+  onError?: (error: ApiError) => void
 }
 
 export default function useSendResetPasswordEmail({
-  onSuccess
-}: UseSendResetPasswordProps): UseSendResetPasswordEmail {
+  onSuccess,
+  onError
+}: UseSendResetPasswordProps) {
   const { setError, setStatus, ...apiState } = useApiState()
 
   const sendResetPasswordEmail = useCallback(
@@ -30,13 +28,19 @@ export default function useSendResetPasswordEmail({
           email
         })
 
-        onSuccess(email)
+        if (onSuccess) {
+          onSuccess(email)
+        }
+
         setStatus('idle')
       } catch (e) {
+        const error = e as ApiError
+        setError(error.message)
         setStatus('error')
-        setError('Error')
 
-        console.log(e)
+        if (onError) {
+          onError(error)
+        }
       }
     },
     []

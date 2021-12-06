@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { withAuth } from '@m3o/nextjs'
-import { Layout } from '../components/Layout'
+import { Layout } from '@/components/Layout'
 
 export const getServerSideProps = withAuth(async context => {
   if (!context.req.user) {

@@ -41,7 +41,8 @@ export async function loginUser(req: NextApiRequest, res: NextApiResponse) {
 
     const cookieOpts: CookieSerializeOptions = {
       expires: new Date(session.expires! * 1000),
-      path: '/'
+      path: '/',
+      sameSite: 'strict'
     }
 
     res.setHeader('Set-Cookie', [

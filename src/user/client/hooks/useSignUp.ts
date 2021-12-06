@@ -1,14 +1,11 @@
+import type { ApiHookProps } from '../../types'
 import { useCallback } from 'react'
 import { CreateRequest } from 'm3o/user'
 import { post } from '../../../ui/fetch'
-import { useApiState, UseApiState } from '../../../ui/hooks/use-api-state'
+import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
-type UseSignUp = Omit<UseApiState, 'setError' | 'setStatus'> & {
-  signUp: (payload: CreateRequest) => Promise<void>
-}
-
-export default function useSignUp(): UseSignUp {
+export function useSignUp({ onSuccess, onError }: ApiHookProps = {}) {
   const { setStatus, setError, ...apiState } = useApiState()
 
   const signUp = useCallback(async (payload: CreateRequest) => {
@@ -20,11 +17,18 @@ export default function useSignUp(): UseSignUp {
         payload
       )
       setStatus('idle')
+
+      if (onSuccess) {
+        onSuccess()
+      }
     } catch (e) {
       const error = e as { message: string }
       setError(error.message)
       setStatus('error')
-      throw error.message
+
+      if (onError) {
+        onError(error)
+      }
     }
   }, [])
 

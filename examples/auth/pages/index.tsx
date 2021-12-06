@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useUser } from '@m3o/nextjs'
-import { Layout } from '../components/Layout'
+import { Layout } from '@/components/Layout'
 
 const Home: NextPage = () => {
   const { user } = useUser()
@@ -16,8 +16,8 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <div className="container">
-          <Link href="/reset-password">
-            <a>Reset Password</a>
+          <Link href="/sign-up">
+            <a>Sign up</a>
           </Link>
           {user && <p data-testid="logged-in-email">{user.email}</p>}
         </div>

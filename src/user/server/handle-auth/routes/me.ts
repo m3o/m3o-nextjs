@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { CONFIG } from '../../../../config'
 import { sendError } from '../../../../utils/errors'
 import { readSession, getUserById } from '../utils'
+import { M3ORequestError } from '../../../../types'
+import { deleteCookie } from '../../../../utils/cookie'
 
 export async function me(
   req: NextApiRequest,
@@ -22,5 +24,14 @@ export async function me(
     res.json({
       account: userResponse.account
     })
-  } catch (e) {}
+  } catch (e) {
+    if ((e as any).Id) {
+      const error = e as M3ORequestError
+
+      if (error.Code === 500 && error.Detail === 'not found') {
+        deleteCookie(res, CONFIG.USER_COOKIE_NAME)
+        return res.status(401).send({ error: { message: 'Token expired' } })
+      }
+    }
+  }
 }

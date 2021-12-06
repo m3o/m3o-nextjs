@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useUser } from '@m3o/nextjs'
-import { Layout } from '../components/Layout'
+import { Layout } from '@/components/Layout'
 
 const PrivateClient: NextPage = () => {
   const { user, isAuthenticating } = useUser()

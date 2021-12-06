@@ -1,17 +1,19 @@
+import type { ApiError, ApiHookProps } from '../../types'
+import type { LoginRequest, Account } from 'm3o/user'
+
 import { useCallback } from 'react'
-import { LoginRequest, Account } from 'm3o/user'
 import { post } from '../../../ui/fetch'
-import { useUser } from '../components/UserProvider'
+import { useUser } from '../UserProvider'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { CONFIG } from '../../../config'
 
 type LoginFields = Pick<LoginRequest, 'email' | 'password'>
 
-type LoginResponse = {
+interface LoginResponse {
   account: Account
 }
 
-export default function useEmailLogin() {
+export function useEmailLogin({ onSuccess, onError }: ApiHookProps = {}) {
   const { setUser } = useUser()
   const { setStatus, setError, ...apiState } = useApiState()
 
@@ -26,11 +28,18 @@ export default function useEmailLogin() {
 
       setUser(response.account)
       setStatus('idle')
+
+      if (onSuccess) {
+        onSuccess()
+      }
     } catch (e) {
-      const error = e as { message: string }
+      const error = e as ApiError
       setError(error.message)
       setStatus('error')
-      throw error.message
+
+      if (onError) {
+        onError(error)
+      }
     }
   }, [])
 

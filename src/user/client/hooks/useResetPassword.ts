@@ -1,23 +1,25 @@
 import type { ResetPasswordRequest } from 'm3o/user'
-import type { RequestError } from '../../../types'
+import type { ApiHookProps, ApiError } from '../../types'
 import { useCallback } from 'react'
 import { useApiState } from '../../../ui/hooks/use-api-state'
 import { post } from '../../../ui/fetch'
 import { CONFIG } from '../../../config'
 
-interface UseResetPassword {
+type ResetPasswordPayload = Omit<ResetPasswordRequest, 'email'>
+
+interface UseResetPassword extends ApiHookProps {
   email: string
-  onSuccess: VoidFunction
 }
 
 export default function useResetPassword({
   email,
-  onSuccess
+  onSuccess,
+  onError
 }: UseResetPassword) {
   const { setError, setStatus, ...apiState } = useApiState()
 
   const resetPassword = useCallback(
-    async (payload: Omit<ResetPasswordRequest, 'email'>) => {
+    async (payload: ResetPasswordPayload) => {
       setStatus('loading')
 
       try {
@@ -27,11 +29,18 @@ export default function useResetPassword({
         })
 
         setStatus('idle')
-        onSuccess()
+
+        if (onSuccess) {
+          onSuccess()
+        }
       } catch (e) {
-        const error = e as RequestError['error']
+        const error = e as ApiError
         setStatus('error')
         setError(error.message)
+
+        if (onError) {
+          onError(error)
+        }
       }
     },
     [setStatus, setError, email]
