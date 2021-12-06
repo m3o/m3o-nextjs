@@ -10,10 +10,20 @@ Please firsty make sure that you have created an API Key on [M3O.com](https://m3
 
 ### API routes / handlers
 
-Firstly you need to create the a file that will create all your user route handling. Within the `pages/api` folder create a file under the user folder called `[...m3oUser].(ts|js)`. e.g `pages/api/user/[...m3oUser].js`. This will setup these handlers:
+Firstly you need to create the a file that will create all your user route handling. Within the `pages/api` folder create a file under the user folder called `[...m3oUser].(ts|js)`. e.g `pages/api/user/[...m3oUser].js`.
 
-- POST: api/user/login
-- POST: api/user/logout
-- POST: api/user/sign-up
-- GET: api/user/me
-- POST: api/user/reset-password
+Once this file is setup we now need to call the function hat will create the routes:
+
+```javascript
+import { handleAuth } from '@m3o/nextjs'
+
+export default handleAuth()
+```
+
+This will setup these handlers:
+
+- `POST: api/user/login`
+- `POST: api/user/logout`
+- `POST: api/user/sign-up`
+- `GET: api/user/me`
+- `POST: api/user/reset-password`
