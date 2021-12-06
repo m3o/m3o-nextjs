@@ -1,10 +1,10 @@
 # M3O User API
 
-This project provides quick and easy authentciation for Next.js by leveraging the (M3O User API)[https://m3o.com/user]. The package provides the server routing and the all authentication state management for the UI.
+This project provides quick and easy authentication for Next.js by leveraging the [M3O User API](https://m3o.com/user). The package provides the server routing and the all authentication state management for the UI.
 
 ## Getting Started
 
-Please firsty make sure that you have created an API Key on (M3O.com)[https://m3o.com]. Once you have created this key please create a `.env.local` file within your project and add the key:
+Please firsty make sure that you have created an API Key on [M3O.com](https://m3o.com). Once you have created this key please create a `.env.local` file within your project and add the key:
 
 `M3O_KEY=NjM1NDRjMTQtZWVjZC00OGI4LTgxYTMtMmI0ZjBjMWNiMGNm`
 
