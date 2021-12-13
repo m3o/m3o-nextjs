@@ -1,6 +1,6 @@
 {
   "name": "@m3o/nextjs",
-  "version": "0.0.121",
+  "version": "0.0.124",
   "description": "M3O Nextjs SDK for integrating M3O APIs to allow for rapid product development",
   "main": "./index.js",
   "types": "./typings",
@@ -13,7 +13,8 @@
     "utils",
     "types.d.ts",
     "config.d.ts",
-    "index.d.ts"
+    "index.d.ts",
+    "storage"
   ],
   "scripts": {
     "build": "npm run build:package && npm run build:css && tsc",

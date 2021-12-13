@@ -3,18 +3,18 @@ import Head from 'next/head'
 import { withAuth } from '@m3o/nextjs'
 import { Layout } from '@/components/Layout'
 
-export const getServerSideProps = withAuth(async context => {
-  if (!context.req.user) {
+type Props = {
+  test: string
+}
+
+export const getServerSideProps = withAuth<Props>({
+  redirectOnAuthFailure: true,
+  onAuthentication() {
     return {
-      redirect: {
-        destination: '/',
-        permanent: false
+      props: {
+        test: 'test'
       }
     }
-  }
-
-  return {
-    props: {}
   }
 })
 

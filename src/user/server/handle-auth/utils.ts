@@ -20,8 +20,8 @@ export function getUserById(userId: string): Promise<ReadResponse> {
 export async function getLoggedInUserAccount(
   req: NextApiRequest
 ): Promise<Account> {
-  const { cookies } = req
-  const sessionId = cookies[CONFIG.USER_COOKIE_NAME]
+  const { cookies, headers } = req
+  const sessionId = cookies[CONFIG.USER_COOKIE_NAME] || headers.cookie
 
   if (!sessionId) {
     throw 'No session id found'

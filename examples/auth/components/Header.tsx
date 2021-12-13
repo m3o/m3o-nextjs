@@ -1,10 +1,17 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useUser, useLogout } from '@m3o/nextjs'
 
 export function Header() {
   const { user, isAuthenticating } = useUser()
-  const { logout } = useLogout()
+  const router = useRouter()
+
+  const { logout } = useLogout({
+    onSuccess: () => {
+      router.push('/')
+    }
+  })
 
   return (
     <>

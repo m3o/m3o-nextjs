@@ -1,5 +1,5 @@
 import type { Account } from 'm3o/user'
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import { user } from '../services'
 import { CONFIG } from '../../config'
 
@@ -7,13 +7,24 @@ export interface WithAuthProps {
   user: Account | null
 }
 
-interface WithAuth extends GetServerSidePropsContext {
-  req: GetServerSidePropsContext['req'] & { user: Account | null }
+interface HandlerArgs {
+  context: GetServerSidePropsContext
+  user: Account | null
 }
 
-type Handler = (args: WithAuth) => ReturnType<GetServerSideProps>
+type Handler<P extends Record<string, any>> =
+  | ((args: HandlerArgs) => GetServerSidePropsResult<P>)
+  | ((args: HandlerArgs) => Promise<GetServerSidePropsResult<P>>)
 
-export function withAuth(fn: Handler) {
+interface WithAuth<P extends Record<string, any>> {
+  redirectOnAuthFailure?: boolean | string
+  onAuthentication?: Handler<P>
+}
+
+export function withAuth<P extends Record<string, any>>({
+  onAuthentication,
+  redirectOnAuthFailure
+}: WithAuth<P> = {}) {
   return async (context: GetServerSidePropsContext) => {
     let account: Account | null = null
 
@@ -38,9 +49,38 @@ export function withAuth(fn: Handler) {
       console.log(e)
     }
 
-    return await fn({
-      ...context,
-      req: Object.assign({}, context.req, { user: account })
-    })
+    if (redirectOnAuthFailure && !account) {
+      return {
+        redirect: {
+          destination:
+            typeof redirectOnAuthFailure === 'string'
+              ? redirectOnAuthFailure
+              : '/',
+          permanent: false
+        }
+      }
+    }
+
+    if (onAuthentication) {
+      const callbackResponse = await onAuthentication({
+        context,
+        user: account
+      })
+
+      if ('redirect' in callbackResponse || 'notFound' in callbackResponse) {
+        return callbackResponse
+      }
+
+      return {
+        props: {
+          ...callbackResponse.props,
+          user: account
+        }
+      }
+    }
+
+    return {
+      props: { user: account }
+    }
   }
 }
