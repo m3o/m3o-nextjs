@@ -16,3 +16,4 @@ types.d.ts
 types.d.ts.map
 tsconfig.tsbuildinfo
 storage
+!src/storage
