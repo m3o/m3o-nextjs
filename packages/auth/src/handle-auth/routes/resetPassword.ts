@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { M3ORequestError } from '@m3o-ui/types'
 import type { ResetPasswordRequest } from 'm3o/user'
-import type { M3ORequestError } from '../../../../types'
 import { sendError } from '../../utils/errors'
 import { user } from '../../user'
 

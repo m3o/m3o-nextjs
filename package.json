@@ -33,9 +33,7 @@
       "lint": {
         "outputs": []
       },
-      "dev": {
-        "cache": false
-      }
+      "dev": {}
     }
   },
   "engines": {

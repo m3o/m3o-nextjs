@@ -2,8 +2,8 @@
   "name": "@m3o-ui/auth",
   "version": "0.0.001",
   "description": "M3O Auth for the next generation",
-  "main": "./dist/auth/src/index.js",
-  "types": "./dist/auth/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],

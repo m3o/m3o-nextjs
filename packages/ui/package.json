@@ -1,13 +1,14 @@
 {
   "name": "@m3o-ui/ui",
-  "version": "0.0.0",
+  "version": "0.0.001",
   "private": true,
-  "main": "index.ts",
+  "main": "dist/index.js",
   "files": [
-    "fetch.ts",
-    "hooks"
+    "dist",
+    "m3o-next.css"
   ],
   "scripts": {
+    "build": "tsc && npm run build:css",
     "build:css": "postcss --config postcss.config.css src/styles/m3o-next.css --dir ./"
   },
   "devDependencies": {

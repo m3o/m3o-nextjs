@@ -1,4 +1,4 @@
-import { RequestError } from '../types'
+import { RequestError } from '@m3o-ui/types'
 
 export async function post<
   D extends Record<string, any>,
