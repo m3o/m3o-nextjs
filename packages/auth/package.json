@@ -81,5 +81,6 @@
       "./__tests__/setup.ts"
     ]
   },
-  "browserslist": "> 0.25%, not dead"
+  "browserslist": "> 0.25%, not dead",
+  "gitHead": "ff9bbfd2af7134442681853781256d0fdb971cdc"
 }
