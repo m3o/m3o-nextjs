@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useUser, useLogout } from '@m3o-ui/auth'
+import { useUser, useLogout } from '@m3o/auth'
 
 export function Header() {
   const { user, isAuthenticating } = useUser()

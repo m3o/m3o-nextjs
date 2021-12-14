@@ -1,6 +1,6 @@
-import type { ApiHookProps, ApiError } from '@m3o-ui/types'
+import type { ApiHookProps, ApiError } from '@m3o/types'
 import { useCallback } from 'react'
-import { post, useApiState } from '@m3o-ui/ui'
+import { post, useApiState } from '@m3o/ui'
 import { useUser } from '../components/UserProvider'
 import { CONFIG } from '../config'
 

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { withAuth } from '@m3o-ui/auth'
+import { withAuth } from '@m3o/auth'
 import { Layout } from '@/components/Layout'
 
 type Props = {

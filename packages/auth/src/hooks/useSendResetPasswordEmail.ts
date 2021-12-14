@@ -1,6 +1,6 @@
-import type { ApiError } from '@m3o-ui/types'
+import type { ApiError } from '@m3o/types'
 import { useCallback } from 'react'
-import { useApiState, post } from '@m3o-ui/ui'
+import { useApiState, post } from '@m3o/ui'
 import { CONFIG } from '../config'
 
 interface SendResetPasswordEmailProps {

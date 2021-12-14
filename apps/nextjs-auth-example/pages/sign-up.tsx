@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import { useSignUp } from '@m3o-ui/auth'
+import { useSignUp } from '@m3o/auth'
 import { EMAIL_REGEX } from '@/lib/constants'
 import { Layout } from '@/components/Layout'
 

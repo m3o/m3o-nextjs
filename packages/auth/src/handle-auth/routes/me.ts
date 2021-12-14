@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { M3ORequestError } from '@m3o-ui/types'
+import type { M3ORequestError } from '@m3o/types'
 import { CONFIG } from '../../config'
 import { sendError } from '../../utils/errors'
 import { deleteCookie } from '../../utils/cookie'

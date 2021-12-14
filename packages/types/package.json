@@ -1,6 +1,6 @@
 {
-  "name": "@m3o-ui/types",
-  "version": "0.0.0",
+  "name": "@m3o/types",
+  "version": "1.0.0",
   "private": true,
   "main": "types.ts",
   "files": [

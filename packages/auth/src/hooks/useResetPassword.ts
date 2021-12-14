@@ -1,7 +1,7 @@
 import type { ResetPasswordRequest } from 'm3o/user'
-import type { ApiHookProps, ApiError } from '@m3o-ui/types'
+import type { ApiHookProps, ApiError } from '@m3o/types'
 import { useCallback } from 'react'
-import { useApiState, post } from '@m3o-ui/ui'
+import { useApiState, post } from '@m3o/ui'
 import { CONFIG } from '../config'
 
 type ResetPasswordPayload = Omit<ResetPasswordRequest, 'email'>

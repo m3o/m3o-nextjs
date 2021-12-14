@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useUser } from '@m3o-ui/auth'
+import { useUser } from '@m3o/auth'
 import { Layout } from '@/components/Layout'
 
 const PrivateClient: NextPage = () => {

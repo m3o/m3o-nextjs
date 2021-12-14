@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useForm } from 'react-hook-form'
-import { useEmailLogin } from '@m3o-ui/auth'
+import { useEmailLogin } from '@m3o/auth'
 import { useRouter } from 'next/router'
 import { Layout } from '@/components/Layout'
 import { EMAIL_REGEX } from '@/lib/constants'

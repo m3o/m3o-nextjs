@@ -1,6 +1,6 @@
 {
-  "name": "@m3o-ui/ui",
-  "version": "0.0.001",
+  "name": "@m3o/ui",
+  "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
   "files": [

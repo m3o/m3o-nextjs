@@ -1,7 +1,7 @@
-import type { ApiHookProps } from '@m3o-ui/types'
+import type { ApiHookProps } from '@m3o/types'
 import { useCallback } from 'react'
 import { CreateRequest } from 'm3o/user'
-import { post, useApiState } from '@m3o-ui/ui'
+import { post, useApiState } from '@m3o/ui'
 import { CONFIG } from '../config'
 
 export function useSignUp({ onSuccess, onError }: ApiHookProps = {}) {

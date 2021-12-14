@@ -1,4 +1,4 @@
-import type { SendNextError, M3ORequestError } from '@m3o-ui/types'
+import type { SendNextError, M3ORequestError } from '@m3o/types'
 
 export function sendError({ message, res, statusCode }: SendNextError): void {
   res.status(statusCode).send({ error: { message } })
