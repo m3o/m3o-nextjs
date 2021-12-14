@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: true,
-}
+const withTM = require('next-transpile-modules')(['@m3o-ui/auth'])
+
+module.exports = withTM({
+  reactStrictMode: true
+})

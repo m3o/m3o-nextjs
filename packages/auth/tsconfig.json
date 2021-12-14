@@ -1,8 +1,10 @@
 {
   "extends": "tsconfig/base.json",
   "compilerOptions": {
-    "declaration": true,
-    "outDir": "./dist"
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "jsx": "react"
   },
   "include": ["src/*.ts"],
   "exclude": ["node_modules"]
