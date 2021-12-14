@@ -2,6 +2,7 @@
   "name": "eslint",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "license": "MIT",
   "files": [
     "eslint-preset.js"
