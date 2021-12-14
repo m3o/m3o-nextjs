@@ -82,5 +82,8 @@
     ]
   },
   "browserslist": "> 0.25%, not dead",
-  "gitHead": "ff9bbfd2af7134442681853781256d0fdb971cdc"
+  "gitHead": "aa488d9d808fc96af19740ec26ab3b01d1ccc413",
+  "publishConfig": {
+    "access": "public"
+  }
 }
