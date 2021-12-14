@@ -1,6 +1,14 @@
 dist
 node_modules
 
+.DS_Store
+*.pem
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 ui
 user
 utils
@@ -16,4 +24,9 @@ types.d.ts
 types.d.ts.map
 tsconfig.tsbuildinfo
 storage
-!src/storage
+
+!packages/storage
+!packages/nextjs/src/ui
+!packages/nextjs/src/user
+!packages/nextjs/src/utils
+.turbo

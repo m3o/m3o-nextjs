@@ -1,0 +1,19 @@
+{
+  "name": "m3o-ui-nextjs-auth-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:next": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "cypress:open": "cypress open",
+    "dev": "start-server-and-test dev:next 3000 cypress:open"
+  },
+  "dependencies": {
+    "@m3o-ui/nextjs": "*"
+  },
+  "devDependencies": {
+    "tsconfig": "*",
+    "start-server-and-test": "^1.14.0"
+  }
+}
