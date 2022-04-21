@@ -130,6 +130,7 @@ function Login() {
     }
   })
 
+  // In the real world these values will come from the form fields
   return (
     <form
       onSubmit={() => login({ email: 'test@test.com', password: 'password' })}
@@ -170,10 +171,10 @@ function SignUp() {
     }
   })
 
-  // In a real world example these fields will come from a form.
+  // In the real world these values will come from the form fields
   return (
-    <button
-      onClick={() =>
+    <form
+      onSubmit={() =>
         signUp({
           email: 'test@email.com',
           password: 'password',
@@ -186,7 +187,7 @@ function SignUp() {
       }
     >
       Sign Up
-    </button>
+    </form>
   )
 }
 ```
