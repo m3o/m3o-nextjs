@@ -120,7 +120,7 @@ export default PrivateServerProtected
 
 This hook handles the user login. Once the call is successful, the user will be logged in until the user logs out.
 
-```typescript
+```tsx
 import { useEmailLogin } from '@m3o/auth'
 
 function Login() {
@@ -143,7 +143,7 @@ function Login() {
 
 This hook handles the user logout. This will logout the user on the server and with m3o.
 
-```typescript
+```tsx
 import { useLogout } from '@m3o/auth'
 
 function MyPage() {
@@ -161,7 +161,7 @@ function MyPage() {
 
 This hook allows the user to sign up with their email address. For more information on what data you can use to sign up a user please see [M3O User API](https://m3o.com/user).
 
-```typescript
+```tsx
 import { useSignUp } from '@m3o/auth'
 
 function SignUp() {
