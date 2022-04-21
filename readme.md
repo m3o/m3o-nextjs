@@ -7,18 +7,10 @@ The M3O Next.js SDK is a UI and server component library to integrate our wide r
 - [Installation](#installation)
 - [APIs](#apis)
 
-## Installation
-
-Using [npm](https://npmjs.org):
-
-```sh
-npm install @m3o/nextjs
-```
-
-## APIs
+## Packages
 
 Below is a list of the current APIs we have built components for:
 
-| API  | Readme                                   |
-| ---- | ---------------------------------------- |
-| User | [src/user/readme.md](src/user/readme.md) |
+| API  | Readme                                             |
+| ---- | -------------------------------------------------- |
+| Auth | [packages/auth/readme.md](packages/auth/readme.md) |
