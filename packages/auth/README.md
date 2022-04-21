@@ -118,7 +118,7 @@ export default PrivateServerProtected
 
 ### useEmailLogin
 
-This hook handles the login call with your server. Once the call is successful, the user will be logged in until the user logs out.
+This hook handles the user login. Once the call is successful, the user will be logged in until the user logs out.
 
 ```typescript
 function Login() {
@@ -133,5 +133,23 @@ function Login() {
       onSubmit={() => login({ email: 'test@test.com', password: 'password' })}
     ></form>
   )
+}
+```
+
+### useLogout
+
+This hook handles the user logout. This will logout the user on the server and with m3o.
+
+```typescript
+import { useLogout } from '@m3o/auth'
+
+function MyPage() {
+  const { logout } = useLogout({
+    onSuccess: () => {
+      // Do something on success.
+    }
+  })
+
+  return <button onClick={logout}>Logout</button>
 }
 ```
