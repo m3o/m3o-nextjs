@@ -113,3 +113,25 @@ const PrivateServerProtected: NextPage = () => {
 
 export default PrivateServerProtected
 ```
+
+## Hooks
+
+### useEmailLogin
+
+This hook handles the login call with your server. Once the call is successful, the user will be logged in until the user logs out.
+
+```typescript
+function Login() {
+  const { login } = useEmailLogin({
+    onSuccess: () => {
+      // handle the success call
+    }
+  })
+
+  return (
+    <form
+      onSubmit={() => login({ email: 'test@test.com', password: 'password' })}
+    ></form>
+  )
+}
+```
