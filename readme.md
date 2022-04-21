@@ -13,4 +13,4 @@ Below is a list of the current APIs we have built components for:
 
 | API  | Readme                                             |
 | ---- | -------------------------------------------------- |
-| Auth | [packages/auth/readme.md](packages/auth/readme.md) |
+| Auth | [packages/auth/README.md](packages/auth/README.md) |
