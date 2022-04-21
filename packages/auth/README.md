@@ -34,7 +34,7 @@ On the client we provide useful hooks and providers to integrate with the M3O Us
 
 Within your `_app.(tsx|jsx)` you will need to import our `<UserProvider />` component. This will handle your authentication state:
 
-```javascript
+```typescript
 import { UserProvider } from '@m3o/auth'
 import '../styles/globals.css'
 
@@ -55,9 +55,11 @@ By providing the user to `<UserProvider />`, we're able to share the user across
 
 ### SSG and authenticated routes
 
-Static Site Generation allows your application to be hosted on a CDN which makes for rapid loading speeds. As we're not authenticating on the server before the pages loads, we'll need to check the user is authenticated within the client before any content can be shown. Below, is a basic example of how to block the user until they are authenticated by the M3O user service.
+Static Site Generation allows your application to be hosted on a CDN which makes for rapid loading speeds. When using SSG, you will not be authenticating the user on the server before the page loads. This means, the client will handle the authentication. This allows us to show a loader prior whilst the client is authenticating.
 
-```javascript
+Below, is a basic example of how to block the user until they are authenticated by the M3O user service.
+
+```typescript
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
