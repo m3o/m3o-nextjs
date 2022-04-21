@@ -82,3 +82,34 @@ const PrivateClient: NextPage = () => {
   return <div>{user ? 'Authenticated' : null}</div>
 }
 ```
+
+### Server Side Authentication
+
+By wrapping your `getServerSideProps` call with the `withAuth` wrapper we're able to authenticate the user on the server prior to the webpage loading. By doing this you will be opting in to Server side rendering, which has speed costs.
+
+```typescript
+import type { NextPage } from 'next'
+import { withAuth } from '@m3o/auth'
+
+interface Props {
+  test: string
+}
+
+export const getServerSideProps = withAuth<Props>({
+  redirectOnAuthFailure: true,
+  // Not required, just here as an example.
+  onAuthentication() {
+    return {
+      props: {
+        test: 'test'
+      }
+    }
+  }
+})
+
+const PrivateServerProtected: NextPage = () => {
+  return <div>Private</div>
+}
+
+export default PrivateServerProtected
+```
