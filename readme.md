@@ -1,4 +1,4 @@
-# M3O Next.js SDK
+# M3O UI
 
 The M3O Next.js SDK is a UI and server component library to integrate our wide range of APIs with Next.js.
 
