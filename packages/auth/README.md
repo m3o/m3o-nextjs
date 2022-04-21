@@ -121,6 +121,8 @@ export default PrivateServerProtected
 This hook handles the user login. Once the call is successful, the user will be logged in until the user logs out.
 
 ```typescript
+import { useEmailLogin } from '@m3o/auth'
+
 function Login() {
   const { login } = useEmailLogin({
     onSuccess: () => {
@@ -151,5 +153,40 @@ function MyPage() {
   })
 
   return <button onClick={logout}>Logout</button>
+}
+```
+
+### useSignUp
+
+This hook allows the user to sign up with their email address. For more information on what data you can use to sign up a user please see [M3O User API](https://m3o.com/user).
+
+```typescript
+import { useSignUp } from '@m3o/auth'
+
+function SignUp() {
+  const { signUp, error } = useSignUp({
+    onSuccess: () => {
+      // Do something on success.
+    }
+  })
+
+  // In a real world example these fields will come from a form.
+  return (
+    <button
+      onClick={() =>
+        signUp({
+          email: 'test@email.com',
+          password: 'password',
+          // optional fields
+          profile: {
+            firstName: 'Darth',
+            lastName: 'Vader'
+          }
+        })
+      }
+    >
+      Sign Up
+    </button>
+  )
 }
 ```
