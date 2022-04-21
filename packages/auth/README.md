@@ -52,3 +52,31 @@ export default MyApp
 ```
 
 By providing the user to `<UserProvider />`, we're able to share the user across the application without the need to add this to each layout.
+
+### SSG and authenticated routes
+
+Static Site Generation allows your application to be hosted on a CDN which makes for rapid loading speeds. As we're not authenticating on the server before the pages loads, we'll need to check the user is authenticated within the client before any content can be shown. Below, is a basic example of how to block the user until they are authenticated by the M3O user service.
+
+```javascript
+import type { NextPage } from 'next'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useUser } from '@m3o/auth'
+
+const PrivateClient: NextPage = () => {
+  const { user, isAuthenticating } = useUser()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isAuthenticating && !user) {
+      router.push('/')
+    }
+  }, [isAuthenticating, user])
+
+  if (isAuthenticating) {
+    return <p>Loading...</p>
+  }
+
+  return <div>{user ? 'Authenticated' : null}</div>
+}
+```
