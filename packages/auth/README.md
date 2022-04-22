@@ -1,16 +1,38 @@
-# M3O Authentication for Next.js
+# @m3o/auth
 
-This project provides quick and easy authentication for Next.js. Under the hood, the package use of the [M3O User API](https://m3o.com/user). The package provides the server routing and user state management for the UI.
+The M3O Auth SDK is library for implementing authentication in your Next.js application. Under the hood this library uses the [M3O User API](https://m3o.com/user).
+
+### Table of Contents
+
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+  - [Server Setup](#server-setup)
+  - [Client Setup](#client-setup)
+- [SSG and authenticated routes](#ssg-and-authenticated-routes)
+
+### Installation
+
+Using NPM
+
+`npm install @m3o/auth`
+
+Using Yarn
+
+`yarn add @m3o/auth`
 
 ## Getting Started
 
-Please make sure that you have created an API Key on [M3O.com](https://m3o.com). Once created this key please add to your `.env.local` of `.env` file within your project:
+To use this package you'll need to make sure that you have an [M3O](https://m3o.com) API Key.
+
+Once created this key please add to your `.env.local`:
 
 `M3O_KEY=xxxxx`
 
-### API routes / handlers
+#### Server setup
 
-You need to create the a file that will bootstrap all your user route handling on the server. Within the `pages/api` folder create a file under the user folder called `[...m3oUser].(ts|js)`. e.g `pages/api/user/[...m3oUser].js`.
+You need to create the a file that will bootstrap all your user route handling on the server.
+
+Within the `pages/api` folder a folder called `/user`. Then within this folder create a file called `[...m3oUser].(js)` or `.ts` if you're a Typescript user.
 
 Once this file is setup we now need to call the function that will create the all the authentication handling on your API:
 
@@ -22,15 +44,13 @@ export default handleAuth()
 
 This will setup these handlers:
 
-- `POST: api/user/login`
-- `POST: api/user/logout`
-- `POST: api/user/sign-up`
-- `GET: api/user/me`
+- `POST: api/user/login` - This creates the route to login the user using the M3O User API. Once successful this will handle the cookie creation and the session.
+- `POST: api/user/logout` - This will logout the user on M3O and also destroy the local session.
+- `POST: api/user/sign-up` - This is the route that a new user details will need to be posted to to create a new user.
+- `GET: api/user/me` - This is the route for returning the current logged in user.
 - `POST: api/user/reset-password`
 
-### Client
-
-On the client we provide useful hooks and providers to integrate with the M3O User API.
+#### Client setup
 
 Within your `_app.(tsx|jsx)` you will need to import our `<UserProvider />` component. This will handle your authentication state:
 
@@ -51,7 +71,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp
 ```
 
-By providing the user to `<UserProvider />`, we're able to share the user across the application without the need to add this to each layout.
+If you use the `withAuth` `getServerSideProps` wrapper on any of your pages, then you can pass the `user` from the `pageProps` straight to the `UserProvider`. This means that the user will be available on the state (when logged in) on first load.
 
 ### SSG and authenticated routes
 
