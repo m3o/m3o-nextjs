@@ -1,24 +1,23 @@
 # @m3o/auth
 
-The M3O Auth SDK is library for implementing authentication in your Next.js application. Under the hood this library uses the [M3O User API](https://m3o.com/user).
+The M3O Auth SDK is library for implementing authentication in your Next.js application.
 
-### Table of Contents
+Under the hood this library uses the [M3O User API](https://m3o.com/user). M3O provides simple and easy to use API's as building blocks for your API. For more information see [M3O](https://m3o.com)
+
+## Table of Contents
 
 - [Installation](#installation)
 - [Getting Started](#getting-started)
   - [Server Setup](#server-setup)
   - [Client Setup](#client-setup)
 - [SSG and authenticated routes](#ssg-and-authenticated-routes)
+- [Server Side Authentication](#server-side-authentication)
+- [Hooks](#hooks)
+  - [useEmailLogin](#useEmailLogin)
 
-### Installation
+## Installation
 
-Using NPM
-
-`npm install @m3o/auth`
-
-Using Yarn
-
-`yarn add @m3o/auth`
+`npm install @m3o/auth` or `yarn add @m3o/auth`
 
 ## Getting Started
 
@@ -30,7 +29,7 @@ Once created this key please add to your `.env.local`:
 
 #### Server setup
 
-You need to create the a file that will bootstrap all your user route handling on the server.
+Firstly, you'll need to create a file which will bootstrap the server and will handle all of your server logic for authentication.
 
 Within the `pages/api` folder a folder called `/user`. Then within this folder create a file called `[...m3oUser].(js)` or `.ts` if you're a Typescript user.
 
@@ -44,11 +43,12 @@ export default handleAuth()
 
 This will setup these handlers:
 
-- `POST: api/user/login` - This creates the route to login the user using the M3O User API. Once successful this will handle the cookie creation and the session.
+- `POST: api/user/login` - This will handle the users login and session creation.
 - `POST: api/user/logout` - This will logout the user on M3O and also destroy the local session.
 - `POST: api/user/sign-up` - This is the route that a new user details will need to be posted to to create a new user.
 - `GET: api/user/me` - This is the route for returning the current logged in user.
-- `POST: api/user/reset-password`
+- `POST: api/user/send-password-reset-email` - When the user needs to reset their password this is the route to call. This will send them a code to be able to reset their password.
+- `POST: api/user/reset-password` - t
 
 #### Client setup
 
