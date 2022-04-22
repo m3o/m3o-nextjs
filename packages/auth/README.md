@@ -59,7 +59,7 @@ Static Site Generation allows your application to be hosted on a CDN which makes
 
 Below, is a basic example of how to block the user until they are authenticated by the M3O user service.
 
-```typescript
+```tsx
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -187,6 +187,55 @@ function SignUp() {
       }
     >
       Sign Up
+    </form>
+  )
+}
+```
+
+### useSendResetPasswordEmail
+
+This hook provides the functionality to send the user a code to reset their password. Once the email is received the user can then enter their code to reset their password.
+
+```tsx
+import { useSendResetPasswordEmail } from '@m3o/auth'
+
+function SendResetPasswordEmail() {
+  const { sendResetPasswordEmail } = useSendResetPasswordEmail({
+    onSuccess: () => {
+      // Do something on success.
+    }
+  })
+  return (
+    <button onClick={sendResetPasswordEmail}>
+      Forgot password?
+    </form>
+  )
+}
+```
+
+### useResetPassword
+
+This hook provides the functionality for the user to reset their password. Here they post the code that is received from the previous hook
+
+```tsx
+import { useResetPassword } from '@m3o/auth'
+
+function ResetPassword() {
+  const { resetPassword } = useResetPassword({
+    email: 'test@email.com'
+  })
+
+  return (
+    <form
+      onSubmit={() =>
+        resetPassword({
+          code: 'xxxxx-xxxx-xxxxxx',
+          confirmPassword: 'password',
+          newPassword: 'password'
+        })
+      }
+    >
+      Reset password
     </form>
   )
 }
