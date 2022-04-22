@@ -1,6 +1,6 @@
 {
   "name": "@m3o/auth",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "M3O Auth for the next generation",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,7 +17,7 @@
   "author": "Martin Virando (martin@m3o.com)",
   "dependencies": {
     "@m3o/types": "^1.0.5",
-    "@m3o/ui": "^1.0.5",
+    "@m3o/ui": "^1.0.11",
     "classnames": "^2.3.1",
     "cookie": "^0.4.1",
     "js-cookie": "^3.0.1",
