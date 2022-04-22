@@ -1,6 +1,6 @@
 {
   "name": "@m3o/auth",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "M3O Auth for the next generation",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
