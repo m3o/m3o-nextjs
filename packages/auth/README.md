@@ -235,19 +235,20 @@ function SignUp() {
 This hook provides the functionality to send the user a code to reset their password. Once the email is received the user can then enter their code to reset their password.
 
 ```jsx
-import { useSendResetPasswordEmail } from '@m3o/auth'
+import { useSendResetPasswordEmail } from '@m3o/auth';
 
 function SendResetPasswordEmail() {
   const { sendResetPasswordEmail } = useSendResetPasswordEmail({
     onSuccess: () => {
       // Do something on success.
     }
-  })
+  });
+
   return (
     <button onClick={sendResetPasswordEmail}>
       Forgot password?
     </form>
-  )
+  );
 }
 ```
 
