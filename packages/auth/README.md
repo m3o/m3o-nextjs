@@ -76,6 +76,8 @@ export default MyApp
 
 If you use the `withAuth` `getServerSideProps` wrapper on any of your pages, then you can pass the `user` from the `pageProps` straight to the `UserProvider`. This means that the user will be available on the state (when logged in) on first load.
 
+## Documentation
+
 ### SSG and authenticated routes
 
 Static Site Generation allows your application to be hosted on a CDN which makes for rapid loading speeds. When using SSG, you will not be authenticating the user on the server before the page loads. This means, the client will handle the authentication. This allows us to show a loader prior whilst the client is authenticating.
