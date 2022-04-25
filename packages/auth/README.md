@@ -12,7 +12,7 @@ Under the hood this library uses the [M3O User API](https://m3o.com/user). M3O p
   - [Client Setup](#client-setup)
 - [SSG and authenticated routes](#ssg-and-authenticated-routes)
 - [Server Side Authentication](#server-side-authentication)
-- [Hooks](#hooks)
+- [Client Side Hooks](#client-side-hooks)
   - [useEmailLogin](#useEmailLogin)
   - [useLogout](#useLogout)
   - [useSignUp](#useSignUp)
@@ -59,7 +59,7 @@ This will setup these handlers:
 
 Within your `_app.jsx` you will need to import our `<UserProvider />` component. This will handle your authentication state:
 
-```typescript
+```jsx
 import { UserProvider } from '@m3o/auth'
 import '../styles/globals.css'
 
@@ -84,13 +84,12 @@ Static Site Generation allows your application to be hosted on a CDN which makes
 
 Below, is a basic example of how to block the user until they are authenticated by the M3O user service.
 
-```tsx
-import type { NextPage } from 'next'
+```jsx
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@m3o/auth'
 
-const PrivateClient: NextPage = () => {
+const PrivateClient = () => {
   const { user, isAuthenticating } = useUser()
   const router = useRouter()
 
@@ -108,7 +107,25 @@ const PrivateClient: NextPage = () => {
 }
 ```
 
-### Server Side Authentication
+You will need to update the `_app.jsx` file to pass the authenticated user to the `UserProvider`
+
+```jsx
+// _app.jsx
+import { UserProvider } from '@m3o/auth'
+import '../styles/globals.css'
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <UserProvider user={pageProps.user}>
+      <Component {...pageProps} />
+    </UserProvider>
+  )
+}
+
+export default MyApp
+```
+
+### Server Side Rendering
 
 By wrapping your `getServerSideProps` call with the `withAuth` wrapper we're able to authenticate the user on the server prior to the webpage loading. By doing this you will be opting in to Server side rendering, which has speed costs.
 
@@ -139,7 +156,7 @@ const PrivateServerProtected: NextPage = () => {
 export default PrivateServerProtected
 ```
 
-## Hooks
+## Client Side Hooks
 
 ### useEmailLogin
 
