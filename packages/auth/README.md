@@ -107,24 +107,6 @@ const PrivateClient = () => {
 }
 ```
 
-You will need to update the `_app.jsx` file to pass the authenticated user to the `UserProvider`
-
-```jsx
-// _app.jsx
-import { UserProvider } from '@m3o/auth'
-import '../styles/globals.css'
-
-function MyApp({ Component, pageProps }) {
-  return (
-    <UserProvider user={pageProps.user}>
-      <Component {...pageProps} />
-    </UserProvider>
-  )
-}
-
-export default MyApp
-```
-
 ### Server Side Rendering
 
 By wrapping your `getServerSideProps` call with the `withAuth` wrapper we're able to authenticate the user on the server prior to the webpage loading. By doing this you will be opting in to Server side rendering, which has speed costs.
@@ -154,6 +136,24 @@ const PrivateServerProtected: NextPage = () => {
 }
 
 export default PrivateServerProtected
+```
+
+You will need to update the `_app.jsx` file to pass the authenticated user to the `UserProvider`
+
+```jsx
+// _app.jsx
+import { UserProvider } from '@m3o/auth'
+import '../styles/globals.css'
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <UserProvider user={pageProps.user}>
+      <Component {...pageProps} />
+    </UserProvider>
+  )
+}
+
+export default MyApp
 ```
 
 ## Client Side Hooks
