@@ -10,14 +10,15 @@ Under the hood this library uses the [M3O User API](https://m3o.com/user). M3O p
 - [Getting Started](#getting-started)
   - [Server Setup](#server-setup)
   - [Client Setup](#client-setup)
-- [SSG and authenticated routes](#ssg-and-authenticated-routes)
-- [Server Side Authentication](#server-side-authentication)
-- [Client Side Hooks](#client-side-hooks)
-  - [useEmailLogin](#useEmailLogin)
-  - [useLogout](#useLogout)
-  - [useSignUp](#useSignUp)
-  - [useSendResetPasswordEmail](#useSendResetPasswordEmail)
-  - [useResetPassword](#useResetPassword)
+- [Documentation](#documentation)
+  - [SSG and authenticated routes](#ssg-and-authenticated-routes)
+  - [Server Side Authentication](#server-side-authentication)
+  - [Client Side Hooks](#client-side-hooks)
+    - [useEmailLogin](#useEmailLogin)
+    - [useLogout](#useLogout)
+    - [useSignUp](#useSignUp)
+    - [useSendResetPasswordEmail](#useSendResetPasswordEmail)
+    - [useResetPassword](#useResetPassword)
 
 ## Installation
 
