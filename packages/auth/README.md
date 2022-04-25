@@ -33,11 +33,12 @@ Once created, add the key to your `.env.local`:
 
 #### Server setup
 
-Firstly, you'll need to create a file which will bootstrap the APIs calls needed for authentication. [More information on catch-all routing](https://nextjs.org/docs/api-routes/dynamic-api-routes#optional-catch-all-api-routes).
+Firstly, you'll need to create a file which will bootstrap the APIs calls needed for authentication.[More information on catch-all routing](https://nextjs.org/docs/api-routes/dynamic-api-routes#optional-catch-all-api-routes).
 
-Within the `pages/api` folder create a folder called `/user`. Then within this folder create a file called `[...m3oUser].js` or `.ts` if you're a Typescript user.
+- Create a folder in `pages/api` called `/user`.
+- Create a file called `[...m3oUser].js` or `.ts` if you're a Typescript user.
 
-Once this file is setup we now need to call the function that will create the all the authentication handling on your API:
+Within this created file you can now call the `handleAuth` method supplied by `@m3o/auth`:
 
 ```javascript
 import { handleAuth } from '@m3o/auth'
