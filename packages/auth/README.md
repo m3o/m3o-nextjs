@@ -111,15 +111,10 @@ const PrivateClient = () => {
 
 By wrapping your `getServerSideProps` call with the `withAuth` wrapper we're able to authenticate the user on the server prior to the webpage loading. By doing this you will be opting in to Server side rendering, which has speed costs.
 
-```typescript
-import type { NextPage } from 'next'
+```jsx
 import { withAuth } from '@m3o/auth'
 
-interface Props {
-  test: string
-}
-
-export const getServerSideProps = withAuth<Props>({
+export const getServerSideProps = withAuth({
   redirectOnAuthFailure: true,
   // Not required, just here as an example.
   onAuthentication() {
@@ -131,7 +126,7 @@ export const getServerSideProps = withAuth<Props>({
   }
 })
 
-const PrivateServerProtected: NextPage = () => {
+const PrivateServerProtected = () => {
   return <div>Private</div>
 }
 
@@ -185,7 +180,7 @@ function Login() {
 
 This hook handles the user logout. This will logout the user on the server and with m3o.
 
-```tsx
+```jsx
 import { useLogout } from '@m3o/auth'
 
 function MyPage() {
@@ -203,7 +198,7 @@ function MyPage() {
 
 This hook allows the user to sign up with their email address. For more information on what data you can use to sign up a user please see [M3O User API](https://m3o.com/user).
 
-```tsx
+```jsx
 import { useSignUp } from '@m3o/auth'
 
 function SignUp() {
@@ -238,7 +233,7 @@ function SignUp() {
 
 This hook provides the functionality to send the user a code to reset their password. Once the email is received the user can then enter their code to reset their password.
 
-```tsx
+```jsx
 import { useSendResetPasswordEmail } from '@m3o/auth'
 
 function SendResetPasswordEmail() {
@@ -259,7 +254,7 @@ function SendResetPasswordEmail() {
 
 This hook provides the functionality for the user to reset their password. Here they post the code that is received from the previous hook
 
-```tsx
+```jsx
 import { useResetPassword } from '@m3o/auth'
 
 function ResetPassword() {
