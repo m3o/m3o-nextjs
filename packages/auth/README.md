@@ -14,6 +14,10 @@ Under the hood this library uses the [M3O User API](https://m3o.com/user). M3O p
 - [Server Side Authentication](#server-side-authentication)
 - [Hooks](#hooks)
   - [useEmailLogin](#useEmailLogin)
+  - [useLogout](#useLogout)
+  - [useSignUp](#useSignUp)
+  - [useSendResetPasswordEmail](#useSendResetPasswordEmail)
+  - [useResetPassword](#useResetPassword)
 
 ## Installation
 
