@@ -33,10 +33,10 @@ Once created, add the key to your `.env.local`:
 
 #### Server setup
 
-Firstly, you'll need to create a file which will bootstrap the APIs calls needed for authentication.[More information on catch-all routing](https://nextjs.org/docs/api-routes/dynamic-api-routes#optional-catch-all-api-routes).
+Firstly, you'll need to create a file which will bootstrap the APIs calls needed for authentication. [More information on catch-all routing](https://nextjs.org/docs/api-routes/dynamic-api-routes#optional-catch-all-api-routes).
 
 - Create a folder in `pages/api` called `/user`.
-- Create a file called `[...m3oUser].js` or `.ts` if you're a Typescript user.
+- Create a file called `[...m3oUser].js` or `.ts` if you're a Typescript user within this folder.
 
 Within this created file you can now call the `handleAuth` method supplied by `@m3o/auth`:
 
@@ -53,7 +53,7 @@ This will setup these handlers:
 - `POST: api/user/sign-up` - This is the route that a new user details will need to be posted to to create a new user.
 - `GET: api/user/me` - This is the route for returning the current logged in user.
 - `POST: api/user/send-password-reset-email` - When the user needs to reset their password this is the route to call. This will send them a code to be able to reset their password.
-- `POST: api/user/reset-password` - t
+- `POST: api/user/reset-password` - This is the POST to send the users new password and the code from the `send-password-reset-email` request.
 
 #### Client setup
 
