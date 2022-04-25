@@ -57,17 +57,15 @@ This will setup these handlers:
 
 #### Client setup
 
-Within your `_app.(tsx|jsx)` you will need to import our `<UserProvider />` component. This will handle your authentication state:
+Within your `_app.jsx` you will need to import our `<UserProvider />` component. This will handle your authentication state:
 
 ```typescript
 import { UserProvider } from '@m3o/auth'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  const { user } = pageProps
-
   return (
-    <UserProvider user={user}>
+    <UserProvider>
       <Component {...pageProps} />
     </UserProvider>
   )
