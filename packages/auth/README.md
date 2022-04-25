@@ -27,15 +27,15 @@ Under the hood this library uses the [M3O User API](https://m3o.com/user). M3O p
 
 To use this package you'll need to make sure that you have an [M3O](https://m3o.com) API Key.
 
-Once created this key please add to your `.env.local`:
+Once created, add the key to your `.env.local`:
 
 `M3O_KEY=xxxxx`
 
 #### Server setup
 
-Firstly, you'll need to create a file which will bootstrap the server and will handle all of your server logic for authentication.
+Firstly, you'll need to create a file which will bootstrap the APIs calls needed for authentication.
 
-Within the `pages/api` folder a folder called `/user`. Then within this folder create a file called `[...m3oUser].(js)` or `.ts` if you're a Typescript user.
+Within the `pages/api` folder create a folder called `/user`. Then within this folder create a file called `[...m3oUser].(js)` or `.ts` if you're a Typescript user.
 
 Once this file is setup we now need to call the function that will create the all the authentication handling on your API:
 
